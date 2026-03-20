@@ -6,6 +6,7 @@
   "plugins": [
     {
       "name": "doc-writer",
+      "version": "1.0.1",
       "source": "./doc-writer",
       "description": "Generates formal SAP/ERP change request quotes for The Config Team."
     }
