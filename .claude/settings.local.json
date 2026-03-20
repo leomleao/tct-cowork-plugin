@@ -4,7 +4,9 @@
       "Bash(git add:*)",
       "Bash(git commit:*)",
       "Bash(git push:*)",
-      "WebSearch"
+      "WebSearch",
+      "Read(//c/Users/LeonardoLeao/Downloads/**)",
+      "Bash(unzip -o \"Claude-logs-2026-03-20T14-53-58-945Z.zip\" -d Claude-logs-extracted)"
     ]
   }
 }

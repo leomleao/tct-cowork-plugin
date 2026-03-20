@@ -9,10 +9,7 @@
   "plugins": [
     {
       "name": "tct-writer",
-      "source": {
-        "source": "github",
-        "repo": "leomleao/tct-cowork-plugin"
-      },
+      "source": "./",
       "description": "Generates formal SAP/ERP change request quotes for The Config Team."
     }
   ]
