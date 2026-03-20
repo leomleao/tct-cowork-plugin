@@ -1,0 +1,25 @@
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.swp
+
+# Build artifacts (if any)
+dist/
+build/
+
+# Node modules (if applicable)
+node_modules/
+
+# Environment files
+.env
+.env.local
