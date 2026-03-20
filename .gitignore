@@ -25,3 +25,4 @@ node_modules/
 .env.local
 
 .claude/
+knowledge-work-plugins-main/*

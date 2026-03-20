@@ -1,22 +1,13 @@
 {
-  "name": "tct-cowork-plugins",
+  "name": "tct-cowork-plugin",
   "owner": {
     "name": "Leonardo Leao"
-  },
-  "metadata": {
-    "description": "TCT internal plugins for SAP/ERP consulting workflows"
   },
   "plugins": [
     {
       "name": "tct-writer",
       "source": "./tct-writer",
-      "description": "Generates formal SAP/ERP change request quotes for The Config Team.",
-      "version": "1.0.0",
-      "author": {
-        "name": "Leonardo Leao"
-      },
-      "category": "productivity",
-      "keywords": ["sap", "erp", "quote", "trs"]
+      "description": "Generates formal SAP/ERP change request quotes for The Config Team."
     }
   ]
 }

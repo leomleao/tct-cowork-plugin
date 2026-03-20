@@ -4,11 +4,5 @@
   "description": "Generates formal SAP/ERP change request quotes for The Config Team. Fetches a TRS ticket, guides a structured discussion, then produces and fills a Word document using the standard Quote template.",
   "author": {
     "name": "Leonardo Leao"
-  },
-  "repository": "https://github.com/leomleao/tct-cowork-plugin",
-  "license": "MIT",
-  "keywords": ["sap", "erp", "quote", "trs", "word"],
-  "commands": ["./commands/"],
-  "skills": ["./skills/"],
-  "mcpServers": "./.mcp.json"
+  }
 }

@@ -1,23 +1,27 @@
-# /quote [TICKET_ID]
+---
+description: Generate a formal SAP/ERP change request quote for a TRS ticket
+argument-hint: "<TICKET_ID>"
+---
 
-## Trigger
-This command activates the full TCT Quote Writer workflow.
+# /quote
 
-## What you do when this command fires
+Fetch a TRS ticket and produce a filled Word quote document for The Config Team.
+
+## Steps
 
 1. **Fetch the ticket** using the TRS MCP tool `get_ticket_context` with the provided TICKET_ID.
    Extract: ticket title, description, customer name, customer reference, any existing scope or resolution notes.
 
 2. **Display a summary** of what you found so the user can confirm this is the right ticket.
 
-3. **Begin the guided discussion** using the rules and clarifying questions in `quote-prompt.md`.
+3. **Begin the guided discussion** using the rules and clarifying questions in the `quote-prompt` skill.
    Ask only what is missing — if the ticket already answers a question, note that and move on.
    Do not ask all questions at once; group related ones naturally.
 
 4. **When the user signals they are ready** (e.g. "generate", "that's enough", "write it up"),
    confirm the structured output by showing a summary of all sections that will be filled.
 
-5. **Generate the document** by following the steps in `word-mcp-steps.md` exactly:
+5. **Generate the document** by following the steps in the `word-mcp-steps` skill exactly:
    copy template → fill headers → fill body sections → fill RAID → update hours table → update footer.
 
 6. **Confirm completion** by reporting the full output file path.
