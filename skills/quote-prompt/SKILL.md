@@ -1,3 +1,7 @@
+---
+description: Quote writing rules and clarifying questions for TCT SAP/ERP change request quotes
+---
+
 # Quote writing rules and prompt
 
 ## Role

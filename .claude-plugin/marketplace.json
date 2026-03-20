@@ -1,0 +1,16 @@
+{
+  "name": "tct-plugins",
+  "owner": {
+    "name": "Leonardo Leao"
+  },
+  "metadata": {
+    "description": "TCT internal plugins for SAP/ERP consulting workflows"
+  },
+  "plugins": [
+    {
+      "name": "tct-writer",
+      "source": ".",
+      "description": "Generates formal SAP/ERP change request quotes for The Config Team."
+    }
+  ]
+}

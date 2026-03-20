@@ -1,3 +1,7 @@
+---
+description: How to use the TRS MCP tools to fetch ticket context for quote generation
+---
+
 # TRS MCP — how to use your tools
 
 ## Available tools

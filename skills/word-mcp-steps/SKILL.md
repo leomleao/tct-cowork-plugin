@@ -1,3 +1,7 @@
+---
+description: Step-by-step instructions for generating a TCT Quote Word document via word MCP tools
+---
+
 # Word MCP document generation steps
 
 Execute these steps in order once the discussion is confirmed.
@@ -18,14 +22,20 @@ HOURS_UNIT_TEST, HOURS_UAT, HOURS_DEPLOYMENT, HOURS_DOCUMENTATION
 
 ## Step 1 — Create output folder and copy template (Desktop Commander)
 
+Derive CLIENT_PREFIX by taking everything before the first hyphen in TICKET_ID
+(e.g. TCTLAOR-30 → TCTLAOR, TCTRAT-1252 → TCTRAT).
+
+DEST_FOLDER = "C:\Users\LeonardoLeao\OneDrive - The Config Team\Desktop\Clients\[CLIENT_PREFIX]\[TICKET_ID] - [CHANGE_TITLE]"
+DEST = "[DEST_FOLDER]\[TICKET_ID]_Quote_[YYYY-MM-DD].docx"
+
 ```powershell
-New-Item -ItemType Directory -Force -Path "C:\Users\LeonardoLeao\OneDrive - The Config Team\Desktop\Clients\Quotes\[TICKET_ID]"
+New-Item -ItemType Directory -Force -Path "[DEST_FOLDER]"
 
 Copy-Item "C:\Users\LeonardoLeao\OneDrive - The Config Team\Desktop\Clients\Quote template TOKENISED.docx" `
-    "C:\Users\LeonardoLeao\OneDrive - The Config Team\Desktop\Clients\Quotes\[TICKET_ID]\[TICKET_ID]_Quote_[YYYY-MM-DD].docx"
+    "[DEST]"
 ```
 
-Store the destination path as DEST for all subsequent calls.
+Store DEST for all subsequent calls.
 
 ---
 
