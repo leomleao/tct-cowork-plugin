@@ -1,5 +1,5 @@
 {
-  "name": "tct-writer",
+  "name": "doc-writer",
   "version": "1.0.0",
   "description": "Generates formal SAP/ERP change request quotes for The Config Team. Fetches a TRS ticket, guides a structured discussion, then produces and fills a Word document using the standard Quote template.",
   "author": {

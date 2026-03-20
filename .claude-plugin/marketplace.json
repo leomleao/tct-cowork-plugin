@@ -1,12 +1,12 @@
 {
-  "name": "tct-cowork-plugin",
+  "name": "tct-cowork-plugins",
   "owner": {
     "name": "Leonardo Leao"
   },
   "plugins": [
     {
-      "name": "tct-writer",
-      "source": "./tct-writer",
+      "name": "doc-writer",
+      "source": "./doc-writer",
       "description": "Generates formal SAP/ERP change request quotes for The Config Team."
     }
   ]
