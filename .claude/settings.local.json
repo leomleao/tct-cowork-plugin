@@ -6,7 +6,18 @@
       "Bash(git push:*)",
       "WebSearch",
       "Read(//c/Users/LeonardoLeao/Downloads/**)",
-      "Bash(unzip -o \"Claude-logs-2026-03-20T14-53-58-945Z.zip\" -d Claude-logs-extracted)"
+      "Bash(unzip -o \"Claude-logs-2026-03-20T14-53-58-945Z.zip\" -d Claude-logs-extracted)",
+      "Bash(unzip -o \"Claude-logs-2026-03-20T15-02-52-440Z.zip\" -d Claude-logs-extracted2)",
+      "Bash(unzip -o \"Claude-logs-2026-03-20T15-10-06-442Z.zip\" -d Claude-logs-extracted3)",
+      "Bash(mkdir -p plugins/tct-writer)",
+      "Bash(mv .mcp.json commands skills plugins/tct-writer/)",
+      "Bash(mv .claude-plugin/plugin.json plugins/tct-writer/.claude-plugin/plugin.json)",
+      "Bash(rmdir .claude-plugin/.)",
+      "Bash(mkdir -p .claude-plugin)",
+      "Bash(mkdir -p plugins/tct-writer/.claude-plugin)",
+      "Bash(mv .claude-plugin/plugin.json plugins/tct-writer/.claude-plugin/)",
+      "Bash(mv plugins/tct-writer .)",
+      "Bash(rmdir plugins:*)"
     ]
   }
 }

@@ -9,8 +9,14 @@
   "plugins": [
     {
       "name": "tct-writer",
-      "source": "./",
-      "description": "Generates formal SAP/ERP change request quotes for The Config Team."
+      "source": "./tct-writer",
+      "description": "Generates formal SAP/ERP change request quotes for The Config Team.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Leonardo Leao"
+      },
+      "category": "productivity",
+      "keywords": ["sap", "erp", "quote", "trs"]
     }
   ]
 }
