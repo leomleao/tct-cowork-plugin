@@ -1,5 +1,5 @@
 {
-  "name": "TCT Cowork Plugins",
+  "name": "tct-cowork-plugins",
   "owner": {
     "name": "Leonardo Leao"
   },
@@ -8,7 +8,7 @@
   },
   "plugins": [
     {
-      "name": "TCT-Writer",
+      "name": "tct-writer",
       "source": {
         "source": "github",
         "repo": "leomleao/tct-cowork-plugin"
