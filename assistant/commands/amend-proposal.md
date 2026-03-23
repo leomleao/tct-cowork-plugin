@@ -32,6 +32,9 @@ Open an existing TCT quote document, discuss what needs to change, and apply ame
 7. **Confirm completion** by reporting the full file path and listing which sections were amended.
    Remind the user to review and accept/reject tracked changes in Word before sending the document.
 
+8. **Save context** by invoking the `save-context` skill.
+   Write an `Amendment` session entry to the ticket output folder, capturing which sections were amended, what changed, and any open items remaining.
+
 ## Error handling
 - File not found → ask the user for the full path.
 - Section content is ambiguous → ask the user to paste the current text so it can be matched precisely.
