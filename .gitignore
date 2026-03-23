@@ -26,3 +26,5 @@ node_modules/
 
 .claude/
 knowledge-work-plugins-main/*
+
+docs/*

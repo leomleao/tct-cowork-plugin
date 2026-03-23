@@ -56,6 +56,8 @@ Store DEST for all subsequent calls.
 | {{CONTACT_EMAIL}}    | [CONTACT_EMAIL]      |
 | {{PREPARED_BY}}      | Leonardo Leao        |
 
+> **Note:** `{{PREPARED_BY}}` appears **twice** in the template. Call `word:search_and_replace` twice with the same find/replace values to ensure both occurrences are replaced.
+
 ---
 
 ## Inserting content — general rules

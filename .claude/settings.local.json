@@ -22,7 +22,14 @@
       "Bash(gh repo:*)",
       "Read(//tmp/**)",
       "WebFetch(domain:raw.githubusercontent.com)",
-      "WebFetch(domain:github.com)"
+      "WebFetch(domain:github.com)",
+      "Bash(unzip -q \"/c/Users/LeonardoLeao/AppData/Local/uv/cache/wheels-v6/pypi/word-mcp-live/1.2.0-py3-none-any\")",
+      "Bash(grep -r \"word_live_modify_table\\\\|word:word_live\\\\|table_cell\" /c/Dev --include=*.py --include=*.md)",
+      "Bash(grep -r \"word:word_live_modify_table\\\\|word_live_modify_table\" /c/Dev --include=*.py --include=*.md -A 5 -B 2)",
+      "Bash(find /c/Users/LeonardoLeao/AppData -type f -name *mcp*)",
+      "Bash(find /c/Users/LeonardoLeao/AppData/Local/Packages/Claude_pzs8sxrjxfjjc -type f \\\\\\(-name *.md -o -name *.txt \\\\\\))",
+      "Bash(grep -n \"C:\\\\\\\\TCT Quotes\" /c/Dev/tct-cowork-plugin/doc-writer/skills/template-paths/SKILL.md)",
+      "Bash(git mv:*)"
     ]
   }
 }
