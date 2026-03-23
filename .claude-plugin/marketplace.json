@@ -5,10 +5,10 @@
   },
   "plugins": [
     {
-      "name": "doc-writer",
-      "version": "1.0.1",
-      "source": "./doc-writer",
-      "description": "Generates formal SAP/ERP change request quotes for The Config Team."
+      "name": "assistant",
+      "version": "1.1.0",
+      "source": "./assistant",
+      "description": "AI assistant for The Config Team. Generates SAP/ERP change request quotes, supports ticket amendments, and guides structured discussion and resolution for TRS tickets."
     }
   ]
 }
