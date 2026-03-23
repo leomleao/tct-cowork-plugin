@@ -27,6 +27,9 @@ Fetch a TRS ticket and produce a filled Word quote document for The Config Team.
 
 6. **Confirm completion** by reporting the full output file path.
 
+7. **Save context** by invoking the `save-context` skill.
+   Write a `Quote` session entry to the ticket output folder, capturing what was discussed, any TBC items, and the file path of the generated document.
+
 ## Error handling
 - If the ticket is not found in TRS, tell the user and ask them to confirm the ID or paste the details manually.
 - If a required field cannot be determined from the discussion, mark it as `[TBC]` in the document
