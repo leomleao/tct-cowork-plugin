@@ -14,7 +14,7 @@ Fetch a TRS ticket and produce a filled Word quote document for The Config Team.
 
 2. **Display a summary** of what you found so the user can confirm this is the right ticket.
 
-3. **Begin the guided discussion** using the rules and clarifying questions in the `quote-prompt` skill.
+3. **Begin the guided discussion** using the rules and clarifying questions in the `write-proposal` skill.
    Ask only what is missing — if the ticket already answers a question, note that and move on.
    Do not ask all questions at once; group related ones naturally.
 

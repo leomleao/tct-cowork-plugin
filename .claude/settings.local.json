@@ -21,7 +21,8 @@
       "Bash(gh api:*)",
       "Bash(gh repo:*)",
       "Read(//tmp/**)",
-      "WebFetch(domain:raw.githubusercontent.com)"
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:github.com)"
     ]
   }
 }
