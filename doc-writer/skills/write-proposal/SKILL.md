@@ -63,6 +63,62 @@ Work through these before filling the template. Skip any the ticket already answ
 - Are there any BASIS/technical activities needed (e.g. background job scheduling)?
 - Roughly how complex is this — similar to any previous work you can reference?
 
+## Pre-generation review
+
+Before writing anything to file, present the full draft content for every section in a single structured output:
+
+```
+### Review — [TICKET_ID] [CHANGE_TITLE]
+
+**3.1 Requirement provided by customer**
+[draft paragraphs]
+
+**3.2 Additional Information**
+[draft bullets]
+
+**4.1 High Level Solution Design**
+[draft narrative]
+
+**4.2 Scope**
+[draft bullets]
+
+**4.2.1 Out of Scope**
+[draft bullets]
+
+**6.1 Risks**
+[draft bullets]
+
+**6.2 Assumptions**
+[draft bullets]
+
+**6.3 Issues**
+[draft text]
+
+**6.4 Dependencies**
+[draft text]
+
+**Hours**
+| Role | Hours |
+|---|---|
+| Functional | X |
+| Development | X |
+| Technical | X |
+| Unit Test | X |
+| UAT | X |
+| Deployment | X |
+| Documentation | X |
+| **Total** | **X hrs / X days** |
+
+---
+Does this look correct? Reply with any changes, or say "generate" / "looks good" to write the document.
+```
+
+Rules for the review step:
+- Always show the review before calling any word MCP tool
+- If the user requests changes, update the affected sections and re-display the full review
+- Only proceed to document generation when the user explicitly confirms (e.g. "generate", "looks good", "write it")
+- Do not ask for confirmation on individual sections — show everything at once
+
 ## Template sections to fill
 
 ### 3.1 Requirement provided by customer

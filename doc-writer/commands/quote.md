@@ -18,8 +18,9 @@ Fetch a TRS ticket and produce a filled Word quote document for The Config Team.
    Ask only what is missing — if the ticket already answers a question, note that and move on.
    Do not ask all questions at once; group related ones naturally.
 
-4. **When the user signals they are ready** (e.g. "generate", "that's enough", "write it up"),
-   confirm the structured output by showing a summary of all sections that will be filled.
+4. **When the discussion is complete** (user says "that's enough", "ready", or stops asking questions),
+   present the full draft review as defined in the `write-proposal` skill — all sections and the hours table in one block.
+   Wait for the user to confirm or request changes. Repeat the review after any edits until the user explicitly approves.
 
 5. **Generate the document** by following the steps in the `word-mcp-steps` skill exactly:
    copy template → fill headers → fill body sections → fill RAID → update hours table → update footer.
