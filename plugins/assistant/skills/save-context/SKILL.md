@@ -10,7 +10,7 @@ Write a session summary to `[TICKET_ID]_context.md` in the ticket's output folde
 ## Output location
 
 Follow the `template-paths` skill for the exact folder path and naming convention. Key points:
-- The context file goes in the **same folder as the quote document** for this ticket.
+- The context file goes in the **same ticket output folder as the generated project documents** for this ticket.
 - Filename: `[TICKET_ID]_context.md`
 - If the folder does not exist (e.g. a pure `/discuss` session with no prior quote), create it using the ticket title from TRS as the change title component — following the same convention as `template-paths`.
 - If the folder already exists, write the context file into it; do not create a duplicate folder.
@@ -52,6 +52,7 @@ Write exactly this structure for each session:
 | Type | When to use |
 |---|---|
 | `Quote` | This session produced or updated a formal quote document |
+| `FTSD` | This session produced or updated a functional/technical specification document |
 | `Amendment` | This session amended an existing quote with tracked changes |
 | `Discussion` | Scoping or feasibility discussion — no technical investigation, no document produced |
 | `Investigation` | Active debugging, root-cause analysis, or technical research — even if no change resulted |
