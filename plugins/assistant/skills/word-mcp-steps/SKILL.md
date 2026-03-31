@@ -6,6 +6,22 @@ description: Step-by-step instructions for generating a TCT Quote Word document 
 
 Execute these steps in order once the discussion is confirmed.
 
+## Determining CHANGE_TYPE
+
+Before starting, determine CHANGE_TYPE (1–5) from the table below based on the nature and complexity of the change:
+
+| Type | Approval required | Documents | Examples |
+|------|-------------------|-----------|---------|
+| 1 | TL | Transport Req | MRP Controller, New Tax Code |
+| 2 | TL | Light FS, Quote | New SLOC, OBYC Change |
+| 3 | TL and SDM (+ EWM lead if EWM module) | Light FS, Quote | Smartform Change, Change to existing program |
+| 4 | TL, SDM and S&A (+ EWM lead if EWM module) | Full FSTS, Quote | Rebuild of program, Cross module config |
+| 5 | TL, SDM, S&A, PM (+ EWM lead if EWM module) | Full FSTS, Quote | > 4 days functional effort |
+
+Use the scope and hours discussed to pick the correct type. If in doubt, ask the user to confirm before generating.
+
+---
+
 ## Required variables
 Ensure you have values for all of these before starting:
 TICKET_ID, CUSTOMER_NAME, QUOTE_REF, QUOTE_DATE (DD/MM/YYYY),
@@ -108,7 +124,7 @@ find_text:    "{{SECTION_4_1}}"
 replace_text: SECTION_4_1 body paragraphs joined with "\n" (exclude any subheading lines)
 ```
 
-Section 4.1 commonly contains subheadings (e.g. "4.1.1 Functional Design", "4.1.2 Technical Design"). After the `search_and_replace`, call `word:insert_header_near_text` for each subheading in document order (header_style: "Heading 3").
+Section 4.1 commonly contains subheadings (e.g. "Functional Design", "Technical Design"). After the `search_and_replace`, call `word:insert_header_near_text` for each subheading in document order (header_style: "Heading 3"). Use plain text for the subheading title — do not include the numbering (e.g. "4.1.1"); the document style applies numbering automatically.
 
 ## Step 6 — Section 4.2 Scope
 
@@ -212,4 +228,6 @@ print("Footer updated.")
 ```
 
 ## Step 13 — Confirm
-Report to the user: "Quote document ready: [DEST]"
+Report to the user:
+- "Quote document ready: [DEST]"
+- "Change type: [CHANGE_TYPE] — [reason: one sentence explaining why this type was selected]"

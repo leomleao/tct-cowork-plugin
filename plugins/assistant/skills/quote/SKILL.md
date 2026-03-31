@@ -150,8 +150,12 @@ Rules for the review step:
 ## Template sections to fill
 
 ### 3.1 Requirement provided by customer
-2–4 paragraphs summarising the customer's stated requirement in professional language.
-Capture the business context, the pain point, and the desired outcome. Do not editorialize.
+2–4 paragraphs stating what the customer requires, written as a requirements statement — not a problem description or incident report.
+
+Lead with what the customer needs. Briefly mention the business reason or context only if it helps clarify the requirement. Do not describe the issue, the root cause, or the current system behaviour in detail — that is not what this section is for.
+
+Do not mention individuals by name. Write from the organisation's perspective — use "the customer" or the company name only.
+Do not include the proposed resolution here — that belongs in section 4.1.
 
 ### 3.2 Additional Information
 Bullet list of follow-up clarifications, confirmations, or constraints gathered during the discussion.
