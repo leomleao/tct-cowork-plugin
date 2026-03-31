@@ -28,3 +28,4 @@ node_modules/
 knowledge-work-plugins-main/*
 
 docs/*
+plugins/assistant/.claude-plugin.zip

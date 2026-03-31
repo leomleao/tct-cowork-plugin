@@ -9,7 +9,7 @@ description: Use when amending an existing TCT quote document — reading curren
 
 Amend a TCT quote document that has already been generated. Read the existing content, discuss the specific changes with the user, and write each amendment as a Word tracked change so the recipient sees exactly what was modified before accepting.
 
-All rules from `write-proposal` apply — never invent content, use UK English, no SAP object assumptions.
+All rules from `quote` apply — never invent content, use UK English, no SAP object assumptions.
 
 ---
 
@@ -45,11 +45,21 @@ All rules from `write-proposal` apply — never invent content, use UK English, 
   - `TOTAL_DAYS = TOTAL_HOURS / 8` (round to 1 decimal place)
 - If cover fields (customer name, change title, quote ref) are changing, note that the footer will also need updating.
 
-Follow all rules from `write-proposal`:
+Follow all rules from `quote`:
 - No invented content — ask if uncertain
 - UK English throughout
 - Mark unconfirmed items as `[TBC — reason]`
 - No SAP object names unless explicitly confirmed
+
+---
+
+## Pre-flight Confirmation
+
+Before writing anything, present a concise amendment summary to the user:
+- Which sections are changing
+- What the new content will be for each
+
+**Wait for explicit confirmation** (e.g. "apply it", "make the changes", "go ahead") before proceeding to Phase 3. Do not start writing tracked changes until this confirmation is received.
 
 ---
 
@@ -94,6 +104,15 @@ Report:
 - List of sections that were changed
 - Output of `word:list_tracked_changes`
 - Reminder: **"Please review and accept/reject tracked changes in Word before sending this document."**
+
+---
+
+## Phase 5 — Save Context
+
+Invoke the `save-context` skill. Write an `Amendment` session entry to the ticket output folder capturing:
+- Which sections were amended
+- What changed in each section
+- Any open items or `[TBC]` items remaining
 
 ---
 
