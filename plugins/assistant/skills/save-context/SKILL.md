@@ -1,6 +1,7 @@
 ---
 name: save-context
 description: Write a session handover file to the ticket output folder so future AI sessions can resume with full context
+user-invocable: false
 ---
 
 # save-context

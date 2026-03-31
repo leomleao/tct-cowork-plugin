@@ -1,10 +1,6 @@
----
-description: Step-by-step instructions for generating a TCT Quote Word document via word MCP tools
----
+# Quote Word MCP generation steps
 
-# Word MCP document generation steps
-
-Execute these steps in order once the discussion is confirmed.
+Execute these steps in order once the user has approved the draft review.
 
 ## Determining CHANGE_TYPE
 
@@ -23,26 +19,29 @@ Use the scope and hours discussed to pick the correct type. If in doubt, ask the
 ---
 
 ## Required variables
+
 Ensure you have values for all of these before starting:
-TICKET_ID, CUSTOMER_NAME, QUOTE_REF, QUOTE_DATE (DD/MM/YYYY),
-CUSTOMER_REF, CHANGE_TITLE, ISSUE_NUMBER, CHANGE_TYPE,
-CONTACT_NAME, CONTACT_EMAIL,
-SECTION_3_1 (paragraphs), SECTION_3_2 (bullets),
-SECTION_4_1 (paragraphs), SECTION_4_2 (bullets), SECTION_4_2_1 (bullets),
-RISKS (bullets), ASSUMPTIONS_EXTRA (bullets or empty),
-ISSUES, DEPENDENCIES,
-HOURS_FUNCTIONAL, HOURS_DEV, HOURS_TECHNICAL,
-HOURS_UNIT_TEST, HOURS_UAT, HOURS_DEPLOYMENT, HOURS_DOCUMENTATION
+`TICKET_ID`, `CUSTOMER_NAME`, `QUOTE_REF`, `QUOTE_DATE` (DD/MM/YYYY),
+`CUSTOMER_REF`, `CHANGE_TITLE`, `ISSUE_NUMBER`, `CHANGE_TYPE`,
+`CONTACT_NAME`, `CONTACT_EMAIL`,
+`SECTION_3_1` (paragraphs), `SECTION_3_2` (bullets),
+`SECTION_4_1` (paragraphs), `SECTION_4_2` (bullets), `SECTION_4_2_1` (bullets),
+`RISKS` (bullets), `ASSUMPTIONS_EXTRA` (bullets or empty),
+`ISSUES`, `DEPENDENCIES`,
+`HOURS_FUNCTIONAL`, `HOURS_DEV`, `HOURS_TECHNICAL`,
+`HOURS_UNIT_TEST`, `HOURS_UAT`, `HOURS_DEPLOYMENT`, `HOURS_DOCUMENTATION`
 
 ---
 
 ## Step 1 — Create output folder and copy template (Desktop Commander)
 
-Derive CLIENT_PREFIX by taking everything before the first hyphen in TICKET_ID
-(e.g. TCTLAOR-30 → TCTLAOR, TCTRAT-1252 → TCTRAT).
+Derive `CLIENT_PREFIX` by taking everything before the first hyphen in `TICKET_ID`
+(e.g. `TCTLAOR-30` → `TCTLAOR`, `TCTRAT-1252` → `TCTRAT`).
 
+```
 DEST_FOLDER = "C:\Users\LeonardoLeao\OneDrive - The Config Team\Desktop\Clients\[CLIENT_PREFIX]\[TICKET_ID] - [CHANGE_TITLE]"
 DEST = "[DEST_FOLDER]\[TICKET_ID] - [CHANGE_TITLE] - Quote AI DRAFT.docx"
+```
 
 ```powershell
 New-Item -ItemType Directory -Force -Path "[DEST_FOLDER]"
@@ -51,7 +50,7 @@ Copy-Item "C:\Users\LeonardoLeao\OneDrive - The Config Team\Desktop\Clients\Quot
     "[DEST]"
 ```
 
-Store DEST for all subsequent calls.
+Store `DEST` for all subsequent calls.
 
 ---
 
@@ -61,16 +60,16 @@ Store DEST for all subsequent calls.
 |----------------------|----------------------|
 | Customer Name        | [CUSTOMER_NAME]      |
 | TRS Quote Ticket     | [TICKET_ID]          |
-| {{QUOTE_REF}}        | [QUOTE_REF]          |
-| {{QUOTE_DATE}}       | [QUOTE_DATE]         |
-| {{EXPIRY_DATE}}      | Issued + 28 days     |
-| {{CUSTOMER_REF}}     | [CUSTOMER_REF]       |
-| {{CHANGE_TITLE}}     | [CHANGE_TITLE]       |
-| {{ISSUE_NUMBER}}     | [ISSUE_NUMBER]       |
-| {{CHANGE_TYPE}}      | [CHANGE_TYPE]        |
-| {{CONTACT_NAME}}     | [CONTACT_NAME]       |
-| {{CONTACT_EMAIL}}    | [CONTACT_EMAIL]      |
-| {{PREPARED_BY}}      | Leonardo Leao        |
+| `{{QUOTE_REF}}`      | [QUOTE_REF]          |
+| `{{QUOTE_DATE}}`     | [QUOTE_DATE]         |
+| `{{EXPIRY_DATE}}`    | Issued + 28 days     |
+| `{{CUSTOMER_REF}}`   | [CUSTOMER_REF]       |
+| `{{CHANGE_TITLE}}`   | [CHANGE_TITLE]       |
+| `{{ISSUE_NUMBER}}`   | [ISSUE_NUMBER]       |
+| `{{CHANGE_TYPE}}`    | [CHANGE_TYPE]        |
+| `{{CONTACT_NAME}}`   | [CONTACT_NAME]       |
+| `{{CONTACT_EMAIL}}`  | [CONTACT_EMAIL]      |
+| `{{PREPARED_BY}}`    | Leonardo Leao        |
 
 > **Note:** `{{PREPARED_BY}}` appears **twice** in the template. Call `word:search_and_replace` twice with the same find/replace values to ensure both occurrences are replaced.
 

@@ -1,5 +1,7 @@
 ---
+name: template-paths
 description: File paths and naming conventions for TCT quote templates and output documents
+user-invocable: false
 ---
 
 # Template paths and output conventions

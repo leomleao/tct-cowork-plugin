@@ -1,5 +1,7 @@
 ---
+name: trs-mcp-guide
 description: How to use the TRS MCP tools to fetch ticket context for quote generation
+user-invocable: false
 ---
 
 # TRS MCP — how to use your tools
