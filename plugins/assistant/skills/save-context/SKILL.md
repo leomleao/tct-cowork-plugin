@@ -53,6 +53,7 @@ Write exactly this structure for each session:
 |---|---|
 | `Quote` | This session produced or updated a formal quote document |
 | `FTSD` | This session produced or updated a functional/technical specification document |
+| `UTD` | This session produced or updated a unit test document |
 | `Amendment` | This session amended an existing quote with tracked changes |
 | `Discussion` | Scoping or feasibility discussion — no technical investigation, no document produced |
 | `Investigation` | Active debugging, root-cause analysis, or technical research — even if no change resulted |

@@ -9,7 +9,7 @@ description: File paths and naming conventions for TCT quote templates and outpu
 |---|---|
 | Quote | C:\Users\LeonardoLeao\OneDrive - The Config Team\Desktop\Clients\Quote template TOKENISED.docx |
 | FTS | C:\Users\LeonardoLeao\OneDrive - The Config Team\Desktop\Clients\FTS template TOKENISED.docx |
-| Unit Tests | (to be added) |
+| Unit Tests | C:\Users\LeonardoLeao\OneDrive - The Config Team\Desktop\Clients\Unit Test template TOKENISED.docx |
 
 ## Output root
 C:\Users\LeonardoLeao\OneDrive - The Config Team\Desktop\Clients\
@@ -24,6 +24,7 @@ Each client has a folder named after their ticket prefix (the part before the hy
 - Create a subfolder inside the client folder: [PREFIX]\[TICKET_ID] - [CHANGE_TITLE]\
 - File name: [TICKET_ID]_Quote_[YYYY-MM-DD].docx
 - FTSD file name: [TICKET_ID]_FTSD_[YYYY-MM-DD].docx
+- Unit Test file name: [TICKET_ID]_UnitTest_[YYYY-MM-DD].docx
 - Example: Clients\TCTLAOR\TCTLAOR-30 - Implement BAdI for item category\TCTLAOR-30_Quote_2026-03-20.docx
 
 ## Fixed values
