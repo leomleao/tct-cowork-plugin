@@ -29,7 +29,9 @@
       "Bash(find /c/Users/LeonardoLeao/AppData -type f -name *mcp*)",
       "Bash(find /c/Users/LeonardoLeao/AppData/Local/Packages/Claude_pzs8sxrjxfjjc -type f \\\\\\(-name *.md -o -name *.txt \\\\\\))",
       "Bash(grep -n \"C:\\\\\\\\TCT Quotes\" /c/Dev/tct-cowork-plugin/doc-writer/skills/template-paths/SKILL.md)",
-      "Bash(git mv:*)"
+      "Bash(git mv:*)",
+      "Bash(python3 -c \":*)",
+      "Bash(powershell -Command \"Compress-Archive -Path ''C:\\\\Dev\\\\tct-cowork-plugin\\\\plugins\\\\assistant\\\\*'' -DestinationPath ''C:\\\\Users\\\\LeonardoLeao\\\\Downloads\\\\assistant.plugin'' -Force; Write-Host ''Done''\")"
     ]
   }
 }
