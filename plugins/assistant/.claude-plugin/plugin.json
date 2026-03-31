@@ -10,5 +10,5 @@
   "keywords": ["trs", "sap", "erp", "quotes", "tickets"],
   "commands": "./commands/",
   "skills": "./skills/",
-  "mcpServers": "../.mcp.json"
+  "mcpServers": "./.mcp.json"
 }
