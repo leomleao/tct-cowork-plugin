@@ -1,21 +1,12 @@
----
-name: amend-proposal
-description: Use when amending an existing TCT quote document — reading current content, discussing what is changing, and applying amendments as Word tracked changes using track_replace
----
+# Quote Amendment Workflow
 
-# amend-proposal
-
-## Overview
-
-Amend a TCT quote document that has already been generated. Read the existing content, discuss the specific changes with the user, and write each amendment as a Word tracked change so the recipient sees exactly what was modified before accepting.
-
-All rules from `quote` apply — never invent content, use UK English, no SAP object assumptions.
+This file is loaded by `quote/SKILL.md` when an existing quote document is detected in the ticket output folder.
 
 ---
 
 ## Phase 1 — Locate and Read the Document
 
-1. Derive `DEST` from TICKET_ID using `template-paths` skill conventions.
+1. Derive `DEST` from `template-paths` conventions using the `TICKET_ID`.
    If the file is not found at the derived path, ask the user for the full path.
 
 2. Read the document. Extract and summarise the current content of each section:
@@ -45,7 +36,7 @@ All rules from `quote` apply — never invent content, use UK English, no SAP ob
   - `TOTAL_DAYS = TOTAL_HOURS / 8` (round to 1 decimal place)
 - If cover fields (customer name, change title, quote ref) are changing, note that the footer will also need updating.
 
-Follow all rules from `quote`:
+Rules:
 - No invented content — ask if uncertain
 - UK English throughout
 - Mark unconfirmed items as `[TBC — reason]`
@@ -87,7 +78,7 @@ replace_text: <new content>
 ```
 
 - `find_text` must match the document exactly — if unsure, ask the user to paste the current text.
-- For multi-paragraph or multi-bullet sections, join lines with `\n` in `replace_text` (same convention as `word-mcp-steps`).
+- For multi-paragraph or multi-bullet sections, join lines with `\n` in `replace_text`.
 - Apply one `track_replace` call per logical section change. Do not batch unrelated sections into one call.
 
 ### After all changes

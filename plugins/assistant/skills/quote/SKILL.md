@@ -16,9 +16,10 @@ into a formal quote using the standard TCT Quote template.
 
 Load these files at the indicated steps — do not load them all upfront:
 
-- [quote-sections.md](quote-sections.md) — section content guidance. Load when drafting content at step 4.
-- [quote-review-template.md](quote-review-template.md) — pre-generation review template. Load at step 4 when presenting the draft.
-- [quote-word-mcp-steps.md](quote-word-mcp-steps.md) — Word MCP generation steps. Load at step 5 when generating the document.
+- [quote-sections.md](quote-sections.md) — section content guidance. Load when drafting content at step 5.
+- [quote-review-template.md](quote-review-template.md) — pre-generation review template. Load at step 5 when presenting the draft.
+- [quote-word-mcp-steps.md](quote-word-mcp-steps.md) — Word MCP generation steps. Load at step 6 when generating the document.
+- [quote-amend-steps.md](quote-amend-steps.md) — amendment workflow using tracked changes. Load at step 3 when an existing quote is detected.
 
 ## Entry Point
 
@@ -27,18 +28,22 @@ Load these files at the indicated steps — do not load them all upfront:
 
 2. **Display a summary** of what you found so the user can confirm this is the right ticket.
 
-3. **Begin the guided discussion** using the core rules and clarifying questions below.
+3. **Check for an existing quote** — derive `DEST_FOLDER` from `template-paths` conventions and check if any file matching `*Quote*.docx` exists in it.
+   - **Found** → load [quote-amend-steps.md](quote-amend-steps.md) and follow the amendment workflow. Stop here.
+   - **Not found** → continue with step 4.
+
+4. **Begin the guided discussion** using the core rules and clarifying questions below.
    Ask only what is missing — if the ticket already answers a question, note that and move on.
    Do not ask all questions at once; group related ones naturally.
 
-4. **When the discussion is complete**, load [quote-review-template.md](quote-review-template.md) and [quote-sections.md](quote-sections.md), then present the full draft review in one block.
+5. **When the discussion is complete**, load [quote-review-template.md](quote-review-template.md) and [quote-sections.md](quote-sections.md), then present the full draft review in one block.
    Wait for the user to confirm or request changes. Repeat the review after any edits until the user explicitly approves.
 
-5. **Generate the document** by loading [quote-word-mcp-steps.md](quote-word-mcp-steps.md) and executing all steps in order.
+6. **Generate the document** by loading [quote-word-mcp-steps.md](quote-word-mcp-steps.md) and executing all steps in order.
 
-6. **Confirm completion** by reporting the full output file path.
+7. **Confirm completion** by reporting the full output file path.
 
-7. **Save context** by invoking the `save-context` skill.
+8. **Save context** by invoking the `save-context` skill.
    Write a `Quote` session entry to the ticket output folder, capturing what was discussed, any TBC items, and the file path of the generated document.
 
 ## Error handling
