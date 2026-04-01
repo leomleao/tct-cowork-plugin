@@ -11,7 +11,9 @@ This file is loaded by `quote/SKILL.md` when an existing quote document is detec
    where `CLIENT_PREFIX` is the part of `TICKET_ID` before the first hyphen.
    If the file is not found at the derived path, ask the user for the full path.
 
-2. Read the document. Extract and summarise the current content of each section:
+2. **Read the context file** if it exists (`[TICKET_ID]_context.md` in the same folder) to understand all prior sessions — what was agreed, what changed, and any open items — before reading the document.
+
+3. Read the document. Extract and summarise the current content of each section:
 
    | Section | What to extract |
    |---|---|
@@ -24,7 +26,7 @@ This file is loaded by `quote/SKILL.md` when an existing quote document is detec
    | 6.1–6.4 | Risks, Assumptions, Issues, Dependencies |
    | Hours table | Functional, Dev, Technical, Unit Test, UAT, Deployment, Documentation hours |
 
-3. Present the summary to the user. Confirm the document is correct before proceeding.
+4. Present the summary to the user. Confirm the document is correct before proceeding.
 
 ---
 

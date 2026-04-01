@@ -21,6 +21,11 @@ You are acting as a technical advisor for The Config Team. Your role is to help 
 Fetch the ticket using the TRS MCP tool `get_ticket_context` with the provided TICKET_ID.
 Extract: ticket title, description, current status, customer name, any notes or history already in the ticket.
 
+**Check for prior session context** — look in the ticket output folder:
+`C:\Users\LeonardoLeao\OneDrive - The Config Team\Desktop\Clients\[CLIENT_PREFIX]\[TICKET_ID] - [CHANGE_TITLE]\`
+(where `CLIENT_PREFIX` is the part of `TICKET_ID` before the first hyphen).
+If `[TICKET_ID]_context.md` exists, **read it** before proceeding — it contains prior session notes, agreed decisions, and open items that should inform this discussion.
+
 **Error handling:**
 - Ticket not found → tell the user and ask them to paste the relevant ticket details manually.
 - Key information missing from the ticket → note the gap and ask the user to fill it in before proceeding.
