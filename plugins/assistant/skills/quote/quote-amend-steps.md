@@ -7,7 +7,7 @@ This file is loaded by `quote/SKILL.md` when an existing quote document is detec
 ## Phase 1 — Locate and Read the Document
 
 1. Derive `DEST` using the output folder convention:
-   `C:\Users\LeonardoLeao\OneDrive - The Config Team\Desktop\Clients\[CLIENT_PREFIX]\[TICKET_ID] - [CHANGE_TITLE]\[TICKET_ID]_Quote_[YYYY-MM-DD].docx`
+   `${user_config.clients_root}\[CLIENT_PREFIX]\[TICKET_ID] - [CHANGE_TITLE]\[TICKET_ID]_Quote_[YYYY-MM-DD].docx`
    where `CLIENT_PREFIX` is the part of `TICKET_ID` before the first hyphen.
    If the file is not found at the derived path, ask the user for the full path.
 

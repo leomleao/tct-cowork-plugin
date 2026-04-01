@@ -21,22 +21,49 @@ If fewer than 4 test cases are needed, set unused `TEST_CASE_N_NAME` and `TEST_C
 
 ---
 
-## Step 1 — Create output folder and copy UTD template (Desktop Commander)
+## Step 1 — Create output folder and copy UTD template
 
 Derive `CLIENT_PREFIX` by taking everything before the first hyphen in `TICKET_ID`
 (e.g. `TCTLAOR-30` → `TCTLAOR`, `TCTRAT-1252` → `TCTRAT`).
 
 ```
-DEST_FOLDER = "C:\Users\LeonardoLeao\OneDrive - The Config Team\Desktop\Clients\[CLIENT_PREFIX]\[TICKET_ID] - [CHANGE_TITLE]"
-DEST = "[DEST_FOLDER]\[TICKET_ID]_UnitTest_[YYYY-MM-DD].docx"
+DEST_FOLDER   = "${user_config.clients_root}\[CLIENT_PREFIX]\[TICKET_ID] - [CHANGE_TITLE]"
+DEST          = "[DEST_FOLDER]\[TICKET_ID]_UnitTest_[YYYY-MM-DD].docx"
+TEMPLATE      = "${user_config.clients_root}\Unit Test template TOKENISED.docx"
+CONTEXT_FILE  = "[DEST_FOLDER]\[TICKET_ID]_context.md"
 ```
 
-```powershell
-New-Item -ItemType Directory -Force -Path "[DEST_FOLDER]"
+1. If `[CONTEXT_FILE]` does not already exist, create the output folder by writing an initial context file using the built-in **Write tool**:
 
-Copy-Item "C:\Users\LeonardoLeao\OneDrive - The Config Team\Desktop\Clients\Unit Test template TOKENISED.docx" `
-    "[DEST]"
-```
+   Write to `[CONTEXT_FILE]`:
+   ```markdown
+   ## Session [YYYY-MM-DD] — UTD
+
+   ### Ticket summary
+   [One-line description of the ticket]
+
+   ### Research & references
+   - None
+
+   ### Attempts & debug trials
+   - None
+
+   ### Decisions made
+   - Unit test document generation started.
+
+   ### Open items / TBCs
+   - Document generation in progress — full session notes will be appended on completion.
+
+   ### Next steps
+   - Complete document generation and review.
+   ```
+
+2. Copy the template to the destination using `word:copy_document`:
+   ```
+   Tool: word:copy_document
+   source: [TEMPLATE]
+   destination: [DEST]
+   ```
 
 Store `DEST` for all subsequent calls.
 

@@ -24,22 +24,49 @@ If fewer than 4 test cases are needed, set unused `TEST_CASE_N_NAME` and `TEST_C
 
 ---
 
-## Step 1 — Create output folder and copy FTSD template (Desktop Commander)
+## Step 1 — Create output folder and copy FTSD template
 
 Derive `CLIENT_PREFIX` by taking everything before the first hyphen in `TICKET_ID`
 (e.g. `TCTLAOR-30` → `TCTLAOR`, `TCTRAT-1252` → `TCTRAT`).
 
 ```
-DEST_FOLDER = "C:\Users\LeonardoLeao\OneDrive - The Config Team\Desktop\Clients\[CLIENT_PREFIX]\[TICKET_ID] - [CHANGE_TITLE]"
-DEST = "[DEST_FOLDER]\[TICKET_ID]_FTSD_[YYYY-MM-DD].docx"
+DEST_FOLDER   = "${user_config.clients_root}\[CLIENT_PREFIX]\[TICKET_ID] - [CHANGE_TITLE]"
+DEST          = "[DEST_FOLDER]\[TICKET_ID]_FTSD_[YYYY-MM-DD].docx"
+TEMPLATE      = "${user_config.clients_root}\FTS template TOKENISED.docx"
+CONTEXT_FILE  = "[DEST_FOLDER]\[TICKET_ID]_context.md"
 ```
 
-```powershell
-New-Item -ItemType Directory -Force -Path "[DEST_FOLDER]"
+1. If `[CONTEXT_FILE]` does not already exist, create the output folder by writing an initial context file using the built-in **Write tool**:
 
-Copy-Item "C:\Users\LeonardoLeao\OneDrive - The Config Team\Desktop\Clients\FTS template TOKENISED.docx" `
-    "[DEST]"
-```
+   Write to `[CONTEXT_FILE]`:
+   ```markdown
+   ## Session [YYYY-MM-DD] — FTSD
+
+   ### Ticket summary
+   [One-line description of the ticket]
+
+   ### Research & references
+   - None
+
+   ### Attempts & debug trials
+   - None
+
+   ### Decisions made
+   - FTSD document generation started.
+
+   ### Open items / TBCs
+   - Document generation in progress — full session notes will be appended on completion.
+
+   ### Next steps
+   - Complete document generation and review.
+   ```
+
+2. Copy the template to the destination using `word:copy_document`:
+   ```
+   Tool: word:copy_document
+   source: [TEMPLATE]
+   destination: [DEST]
+   ```
 
 Store `DEST` for all subsequent calls.
 
@@ -61,7 +88,7 @@ Store `DEST` for all subsequent calls.
 | `{{CONTACT_EMAIL}}`                    | [CONTACT_EMAIL]                |
 | `{{TEAM_LEADER_APPROVER}}`             | [TEAM_LEADER_APPROVER]         |
 | `{{SERVICE_DELIVERY_MANAGER_APPROVER}}`| [SERVICE_DELIVERY_MANAGER_APPROVER] |
-| `{{PREPARED_BY}}`                      | Leonardo Leao                  |
+| `{{PREPARED_BY}}`                      | ${user_config.author_name}     |
 
 > **Note:** `{{PREPARED_BY}}` appears **twice** in the template. Call `word:search_and_replace` twice with the same find/replace values to ensure both occurrences are replaced.
 

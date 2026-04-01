@@ -25,7 +25,7 @@ Load these files at the indicated steps — do not load them all upfront:
    Extract: ticket title, description, customer name, customer reference, existing scope notes, resolution notes, and any linked documents.
 
 2. **Locate the existing ticket documentation folder**:
-   `C:\Users\LeonardoLeao\OneDrive - The Config Team\Desktop\Clients\[CLIENT_PREFIX]\[TICKET_ID] - [CHANGE_TITLE]\`
+   `${user_config.clients_root}\[CLIENT_PREFIX]\[TICKET_ID] - [CHANGE_TITLE]\`
    where `CLIENT_PREFIX` is the part of `TICKET_ID` before the first hyphen (e.g. `TCTRAT-1252` → `TCTRAT`).
    Review the files already present there before asking questions or drafting content.
 

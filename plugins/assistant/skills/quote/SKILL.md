@@ -29,7 +29,7 @@ Load these files at the indicated steps — do not load them all upfront:
 2. **Display a summary** of what you found so the user can confirm this is the right ticket.
 
 3. **Check the ticket output folder**:
-   `C:\Users\LeonardoLeao\OneDrive - The Config Team\Desktop\Clients\[CLIENT_PREFIX]\[TICKET_ID] - [CHANGE_TITLE]\`
+   `${user_config.clients_root}\[CLIENT_PREFIX]\[TICKET_ID] - [CHANGE_TITLE]\`
    (where `CLIENT_PREFIX` is the part of `TICKET_ID` before the first hyphen).
    - If `[TICKET_ID]_context.md` exists, **read it** to understand what has already been discussed or produced for this ticket before proceeding.
    - If any file matching `*Quote*.docx` exists → load [quote-amend-steps.md](quote-amend-steps.md) and follow the amendment workflow. Stop here.

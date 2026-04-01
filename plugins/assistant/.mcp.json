@@ -1,9 +1,10 @@
 {
   "mcpServers": {
     "trs-mcp": {
-      "command": "node",
+      "command": "npx",
       "args": [
-        "C:\\Dev\\trs-mcp\\build\\index.js"
+        "-y",
+        "github:leomleao/trs-mcp"
       ],
       "env": {
         "TRS_USER_ID": "your-user-id",
@@ -18,8 +19,8 @@
         "word_mcp_server.exe"
       ],
       "env": {
-        "MCP_AUTHOR": "Leonardo Leao",
-        "MCP_AUTHOR_INITIALS": "LL"
+        "MCP_AUTHOR": "${user_config.author_name}",
+        "MCP_AUTHOR_INITIALS": "${user_config.author_initials}"
       }
     }
   }
