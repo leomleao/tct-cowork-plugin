@@ -24,8 +24,9 @@ Load these files at the indicated steps — do not load them all upfront:
 1. **Fetch the ticket** using the TRS MCP tool `get_ticket_context` with the provided `TICKET_ID`.
    Extract: ticket title, description, customer name, customer reference, scope notes, resolution notes, and any linked documents.
 
-2. **Locate the existing ticket documentation folder** using the `template-paths` convention:
-   `[CLIENT_PREFIX]\[TICKET_ID] - [CHANGE_TITLE]\`
+2. **Locate the existing ticket documentation folder**:
+   `C:\Users\LeonardoLeao\OneDrive - The Config Team\Desktop\Clients\[CLIENT_PREFIX]\[TICKET_ID] - [CHANGE_TITLE]\`
+   where `CLIENT_PREFIX` is the part of `TICKET_ID` before the first hyphen (e.g. `TCTRAT-1252` → `TCTRAT`).
    Review the files already present there before asking questions or drafting content.
 
 3. **Inspect existing documentation first**.
@@ -64,7 +65,7 @@ Load these files at the indicated steps — do not load them all upfront:
 
 ## Error handling
 - Ticket not found: ask the user to confirm the ID or paste the details manually.
-- Ticket folder not found: ask the user to confirm the change title or create the standard folder using `template-paths`.
+- Ticket folder not found: ask the user to confirm the change title, then create the folder at the path above.
 - Quote not found in the folder: ask the user to identify the correct source document or provide it manually before drafting the UTD.
 - FTSD not found: continue using the quote and other supporting material, but state that FTSD-derived test coverage could not be extracted.
 - Required test detail cannot be confirmed: mark it as `[TBC — reason]` and highlight the missing expected result or data requirement.

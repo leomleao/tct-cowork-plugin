@@ -28,7 +28,9 @@ Load these files at the indicated steps — do not load them all upfront:
 
 2. **Display a summary** of what you found so the user can confirm this is the right ticket.
 
-3. **Check for an existing quote** — derive `DEST_FOLDER` from `template-paths` conventions and check if any file matching `*Quote*.docx` exists in it.
+3. **Check for an existing quote** — check if any file matching `*Quote*.docx` exists in:
+   `C:\Users\LeonardoLeao\OneDrive - The Config Team\Desktop\Clients\[CLIENT_PREFIX]\[TICKET_ID] - [CHANGE_TITLE]\`
+   (where `CLIENT_PREFIX` is the part of `TICKET_ID` before the first hyphen).
    - **Found** → load [quote-amend-steps.md](quote-amend-steps.md) and follow the amendment workflow. Stop here.
    - **Not found** → continue with step 4.
 

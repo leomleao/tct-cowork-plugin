@@ -10,10 +10,11 @@ Write a session summary to `[TICKET_ID]_context.md` in the ticket's output folde
 
 ## Output location
 
-Follow the `template-paths` skill for the exact folder path and naming convention. Key points:
-- The context file goes in the **same ticket output folder as the generated project documents** for this ticket.
-- Filename: `[TICKET_ID]_context.md`
-- If the folder does not exist (e.g. a pure `/discuss` session with no prior quote), create it using the ticket title from TRS as the change title component — following the same convention as `template-paths`.
+- Output root: `C:\Users\LeonardoLeao\OneDrive - The Config Team\Desktop\Clients\`
+- Client prefix: everything before the first hyphen in `TICKET_ID` (e.g. `TCTRAT-1252` → `TCTRAT`)
+- Ticket folder: `[OUTPUT_ROOT]\[CLIENT_PREFIX]\[TICKET_ID] - [CHANGE_TITLE]\`
+- Context filename: `[TICKET_ID]_context.md`
+- If the folder does not exist (e.g. a pure `/discuss` session with no prior quote), create it — use the ticket title from TRS as `CHANGE_TITLE`.
 - If the folder already exists, write the context file into it; do not create a duplicate folder.
 
 ## Append logic
