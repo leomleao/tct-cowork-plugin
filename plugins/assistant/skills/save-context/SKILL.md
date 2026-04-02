@@ -10,7 +10,7 @@ Write a session summary to `[TICKET_ID]_context.md` in the ticket's output folde
 
 ## Output location
 
-- Output root: `${user_config.clients_root}`
+- Output root: `[CLIENTS_ROOT]` (set by the calling skill's mount guard step)
 - Client prefix: everything before the first hyphen in `TICKET_ID` (e.g. `TCTRAT-1252` → `TCTRAT`)
 - Ticket folder: `[OUTPUT_ROOT]\[CLIENT_PREFIX]\[TICKET_ID] - [CHANGE_TITLE]\`
 - Context filename: `[TICKET_ID]_context.md`

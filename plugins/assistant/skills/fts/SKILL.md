@@ -27,7 +27,7 @@ Read and follow `skills/user-config/_config-guard.md` before proceeding.
    Extract: ticket title, description, customer name, customer reference, existing scope notes, resolution notes, and any linked documents.
 
 2. **Locate the existing ticket documentation folder**:
-   `${user_config.clients_root}\[CLIENT_PREFIX]\[TICKET_ID] - [CHANGE_TITLE]\`
+   `[CLIENTS_ROOT]/[CLIENT_PREFIX]/[TICKET_ID] - [CHANGE_TITLE]/`
    where `CLIENT_PREFIX` is the part of `TICKET_ID` before the first hyphen (e.g. `TCTRAT-1252` → `TCTRAT`).
    Review the files already present there before asking questions or drafting content.
 

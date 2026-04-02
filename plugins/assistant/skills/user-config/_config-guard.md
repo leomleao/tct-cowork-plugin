@@ -1,49 +1,40 @@
-# Config Guard
+# Mount Guard
 
-Before proceeding with any skill action, verify that all required userConfig fields are set and valid.
+Before proceeding with any skill action, verify that the user's Clients folder is mounted in Cowork.
 
 ## Check
 
-Evaluate the following values as they appear after Cowork's variable substitution:
-
-- `clients_root`: `${user_config.clients_root}`
-- `author_name`: `${user_config.author_name}`
-- `author_initials`: `${user_config.author_initials}`
-
-A value is **invalid** if it:
-- Is empty or whitespace only
-- Still contains the literal text `${user_config.` (substitution did not occur)
-
-For `clients_root` specifically, also verify the folder exists on disk:
+Run:
 
 ```bash
-test -d "${user_config.clients_root}" && echo "exists" || echo "missing"
+ls /sessions/*/mnt/ 2>/dev/null | grep -v '^uploads$' | grep -v '^\.'
 ```
 
 ## Happy path
 
-If all three values are valid **and** the `clients_root` folder exists on disk:
+If the command returns a folder name, derive `CLIENTS_ROOT`:
+
+```bash
+SESSION_MNT=$(ls -d /sessions/*/mnt 2>/dev/null | head -1)
+FOLDER_NAME=$(ls "$SESSION_MNT" 2>/dev/null | grep -v '^uploads$' | grep -v '^\.' | head -1)
+CLIENTS_ROOT="$SESSION_MNT/$FOLDER_NAME"
+```
 
 Print this single line and return control to the calling skill immediately — no pause, no user confirmation:
 
 ```
-> Config: ${user_config.clients_root} | ${user_config.author_name} | ${user_config.author_initials}
+> Workspace: [CLIENTS_ROOT]
 ```
+
+Use `CLIENTS_ROOT` for all file path construction in the calling skill.
 
 ## Unhappy path
 
-If any value is invalid or the `clients_root` folder does not exist:
+If the command returns nothing (no folder mounted):
 
-1. Print the status table below, substituting actual values (or "not set" for missing ones):
+Tell the user:
 
-| Field             | Value                | Status |
-|-------------------|----------------------|--------|
-| clients_root      | (value or "not set") | ✓ / ✗  |
-| author_name       | (value or "not set") | ✓ / ✗  |
-| author_initials   | (value or "not set") | ✓ / ✗  |
+> No folder is mounted. Please select your Clients folder to continue.
 
-2. State in one sentence what is wrong (e.g. "`clients_root` is not set" or "the Clients folder no longer exists at the configured path").
-
-3. Invoke the `user-config` skill using the Skill tool to resolve the issue.
-
-4. Once `user-config` completes, re-run this check from the top before continuing with the calling skill.
+Then call the `mcp__cowork__request_cowork_directory` tool to open a folder picker.
+Wait for the user to select a folder, then re-run the check from the top before continuing with the calling skill.

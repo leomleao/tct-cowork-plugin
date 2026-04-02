@@ -25,7 +25,7 @@ node_modules/
 .env.local
 
 .claude/
-knowledge-work-plugins-main/*
+knowledge-work-plugins/*
 
 docs/*
 plugins/assistant/.claude-plugin.zip

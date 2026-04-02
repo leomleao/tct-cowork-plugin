@@ -19,8 +19,8 @@
         "word_mcp_server.exe"
       ],
       "env": {
-        "MCP_AUTHOR": "${user_config.author_name}",
-        "MCP_AUTHOR_INITIALS": "${user_config.author_initials}"
+        "MCP_AUTHOR": "The Config Team",
+        "MCP_AUTHOR_INITIALS": "TCT"
       }
     }
   }

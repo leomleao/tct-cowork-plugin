@@ -27,10 +27,10 @@ Derive `CLIENT_PREFIX` by taking everything before the first hyphen in `TICKET_I
 (e.g. `TCTLAOR-30` → `TCTLAOR`, `TCTRAT-1252` → `TCTRAT`).
 
 ```
-DEST_FOLDER   = "${user_config.clients_root}\[CLIENT_PREFIX]\[TICKET_ID] - [CHANGE_TITLE]"
-DEST          = "[DEST_FOLDER]\[TICKET_ID]_UnitTest_[YYYY-MM-DD].docx"
-TEMPLATE      = "${user_config.clients_root}\Unit Test template TOKENISED.docx"
-CONTEXT_FILE  = "[DEST_FOLDER]\[TICKET_ID]_context.md"
+DEST_FOLDER   = "[CLIENTS_ROOT]/[CLIENT_PREFIX]/[TICKET_ID] - [CHANGE_TITLE]"
+DEST          = "[DEST_FOLDER]/[TICKET_ID]_UnitTest_[YYYY-MM-DD].docx"
+TEMPLATE      = "[CLIENTS_ROOT]/Unit Test template TOKENISED.docx"
+CONTEXT_FILE  = "[DEST_FOLDER]/[TICKET_ID]_context.md"
 ```
 
 1. If `[CONTEXT_FILE]` does not already exist, create the output folder by writing an initial context file using the built-in **Write tool**:

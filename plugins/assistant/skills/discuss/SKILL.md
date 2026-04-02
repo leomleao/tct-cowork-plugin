@@ -24,7 +24,7 @@ Fetch the ticket using the TRS MCP tool `get_ticket_context` with the provided T
 Extract: ticket title, description, current status, customer name, any notes or history already in the ticket.
 
 **Check for prior session context** — look in the ticket output folder:
-`${user_config.clients_root}\[CLIENT_PREFIX]\[TICKET_ID] - [CHANGE_TITLE]\`
+`[CLIENTS_ROOT]/[CLIENT_PREFIX]/[TICKET_ID] - [CHANGE_TITLE]/`
 (where `CLIENT_PREFIX` is the part of `TICKET_ID` before the first hyphen).
 If `[TICKET_ID]_context.md` exists, **read it** before proceeding — it contains prior session notes, agreed decisions, and open items that should inform this discussion.
 
