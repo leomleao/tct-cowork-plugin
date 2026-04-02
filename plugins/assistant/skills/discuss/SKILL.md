@@ -18,6 +18,8 @@ You are acting as a technical advisor for The Config Team. Your role is to help 
 
 ## Entry Point
 
+Read and follow `skills/user-config/_config-guard.md` before proceeding.
+
 Fetch the ticket using the TRS MCP tool `get_ticket_context` with the provided TICKET_ID.
 Extract: ticket title, description, current status, customer name, any notes or history already in the ticket.
 
