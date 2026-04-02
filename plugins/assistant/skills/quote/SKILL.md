@@ -26,6 +26,7 @@ Load these files at the indicated steps — do not load them all upfront:
 Read and follow `skills/user-config/_config-guard.md` before proceeding.
 
 1. **Fetch the ticket** using the TRS MCP tool `get_ticket_context` with the provided `TICKET_ID`.
+   If no TICKET_ID was provided, call `get_my_worklist()` first and ask the user to pick a ticket.
    Extract: ticket title, description, customer name, customer reference, any existing scope or resolution notes.
 
 2. **Display a summary** of what you found so the user can confirm this is the right ticket.

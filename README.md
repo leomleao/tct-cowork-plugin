@@ -17,7 +17,6 @@ The plugin exposes a set of skills (slash commands) inside Claude Code. Each ski
 | **fts** | `/fts <TICKET_ID>` | Functional and Technical Specification Document (FTSD) workflow — builds on an approved quote and produces a complete FTSD `.docx` |
 | **unittest** | `/unittest <TICKET_ID>` | Unit Test Document (UTD) workflow — extracts test coverage from the quote and FTSD, discusses additional scenarios, and generates a UTD `.docx` |
 | **save-context** | *(internal)* | Appends a session handover file to the ticket folder so future sessions resume with full context |
-| **trs-mcp-guide** | *(internal)* | Reference guide for the TRS MCP tools used by the other skills |
 
 ### How it works
 
@@ -65,7 +64,6 @@ tct-cowork-plugin/
 │           ├── fts/            # /fts skill (FTSD workflow + supporting templates)
 │           ├── quote/          # /quote skill (quote workflow + supporting templates)
 │           ├── save-context/   # Internal: session context writer
-│           ├── trs-mcp-guide/  # Internal: TRS MCP usage reference
 │           └── unittest/       # /unittest skill (UTD workflow + supporting templates)
 └── docs/                       # Internal planning and spec documents
 ```
@@ -142,7 +140,6 @@ assistant/
     ├── fts/
     ├── quote/
     ├── save-context/
-    ├── trs-mcp-guide/
     └── unittest/
 ```
 

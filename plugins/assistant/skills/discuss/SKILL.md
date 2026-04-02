@@ -20,6 +20,7 @@ You are acting as a technical advisor for The Config Team. Your role is to help 
 
 Read and follow `skills/user-config/_config-guard.md` before proceeding.
 
+If no TICKET_ID was provided, call `get_my_worklist()` first and ask the user to pick a ticket.
 Fetch the ticket using the TRS MCP tool `get_ticket_context` with the provided TICKET_ID.
 Extract: ticket title, description, current status, customer name, any notes or history already in the ticket.
 
