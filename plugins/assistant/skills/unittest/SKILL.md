@@ -21,6 +21,8 @@ Load these files at the indicated steps — do not load them all upfront:
 
 ## Entry Point
 
+Read and follow `skills/user-config/_config-guard.md` before proceeding.
+
 1. **Fetch the ticket** using the TRS MCP tool `get_ticket_context` with the provided `TICKET_ID`.
    Extract: ticket title, description, customer name, customer reference, scope notes, resolution notes, and any linked documents.
 
