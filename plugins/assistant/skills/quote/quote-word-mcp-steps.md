@@ -228,28 +228,35 @@ Then update total line via word:search_and_replace:
 - replace_text: "[TOTAL_DAYS] days ([TOTAL_HOURS] hours)"
   where TOTAL_HOURS = sum of all hours, TOTAL_DAYS = TOTAL_HOURS / 8 rounded to 1 decimal.
 
-## Step 12 — Footer (Desktop Commander Python zipfile edit)
+## Step 12 — Footer (Bash + stdlib Python)
 
 ```python
-import zipfile, shutil, os
+import zipfile, io
 
 dest = r"[DEST_PATH]"
-tmp  = dest + ".tmp.docx"
-shutil.copy2(dest, tmp)
+replacements = {
+    '{{FOOTER_QUOTE_REF}}':    '[QUOTE_REF]',
+    '{{FOOTER_CUSTOMER_REF}}': '[CUSTOMER_REF]',
+    '{{FOOTER_CHANGE_TITLE}}': '[CHANGE_TITLE]',
+}
 
-with zipfile.ZipFile(tmp, 'r') as zin:
-    with zipfile.ZipFile(dest, 'w', compression=zipfile.ZIP_DEFLATED) as zout:
-        for item in zin.infolist():
-            data = zin.read(item.filename)
-            if item.filename == 'word/footer1.xml':
-                text = data.decode('utf-8')
-                text = text.replace('QUOTE_REF', '[TICKET_ID]')
-                text = text.replace('CUSTOMER_REF', '[CUSTOMER_REF]')
-                text = text.replace('CHANGE_TITLE', '[CHANGE_TITLE]')
-                data = text.encode('utf-8')
-            zout.writestr(item, data)
+with open(dest, 'rb') as f:
+    buf = io.BytesIO(f.read())
 
-os.remove(tmp)
+out = io.BytesIO()
+with zipfile.ZipFile(buf, 'r') as zin, zipfile.ZipFile(out, 'w', zipfile.ZIP_DEFLATED) as zout:
+    for item in zin.infolist():
+        data = zin.read(item.filename)
+        if item.filename == 'word/footer1.xml':
+            text = data.decode('utf-8')
+            for token, value in replacements.items():
+                text = text.replace(token, value)
+            data = text.encode('utf-8')
+        zout.writestr(item, data)
+
+with open(dest, 'wb') as f:
+    f.write(out.getvalue())
+
 print("Footer updated.")
 ```
 

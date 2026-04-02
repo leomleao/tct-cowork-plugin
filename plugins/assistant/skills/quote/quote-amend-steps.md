@@ -70,7 +70,7 @@ Use tracked-change tools. **`word:track_replace` is the primary tool for all tex
 | Adding a new bullet or paragraph with no existing text to replace | `word:track_insert` |
 | Removing content entirely with nothing to replace it | `word:track_delete` |
 | Updating an hours table cell | `word:word_live_modify_table` (direct — no tracking needed for numbers) |
-| Footer changed (TICKET_ID / CUSTOMER_REF / CHANGE_TITLE) | Python zipfile edit via Desktop Commander (direct) |
+| Footer changed (QUOTE_REF / CUSTOMER_REF / CHANGE_TITLE) | Python zipfile edit via Bash (direct) |
 
 ### track_replace usage
 
@@ -84,6 +84,40 @@ replace_text: <new content>
 - `find_text` must match the document exactly — if unsure, ask the user to paste the current text.
 - For multi-paragraph or multi-bullet sections, join lines with `\n` in `replace_text`.
 - Apply one `track_replace` call per logical section change. Do not batch unrelated sections into one call.
+
+### Footer update (when QUOTE_REF / CUSTOMER_REF / CHANGE_TITLE is changing)
+
+The footer already holds real values from the original generation — there are no tokens left to replace. Build the replacement map from the values extracted in Phase 1 (current) and confirmed in Phase 2 (new). Only include entries for fields that are actually changing.
+
+```python
+import zipfile, io
+
+dest = r"[DEST_PATH]"
+replacements = {
+    '[CURRENT_QUOTE_REF]':    '[NEW_QUOTE_REF]',
+    '[CURRENT_CUSTOMER_REF]': '[NEW_CUSTOMER_REF]',
+    '[CURRENT_CHANGE_TITLE]': '[NEW_CHANGE_TITLE]',
+}
+
+with open(dest, 'rb') as f:
+    buf = io.BytesIO(f.read())
+
+out = io.BytesIO()
+with zipfile.ZipFile(buf, 'r') as zin, zipfile.ZipFile(out, 'w', zipfile.ZIP_DEFLATED) as zout:
+    for item in zin.infolist():
+        data = zin.read(item.filename)
+        if item.filename == 'word/footer1.xml':
+            text = data.decode('utf-8')
+            for token, value in replacements.items():
+                text = text.replace(token, value)
+            data = text.encode('utf-8')
+        zout.writestr(item, data)
+
+with open(dest, 'wb') as f:
+    f.write(out.getvalue())
+
+print("Footer updated.")
+```
 
 ### After all changes
 
