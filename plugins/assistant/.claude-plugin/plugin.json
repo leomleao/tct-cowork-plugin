@@ -4,9 +4,7 @@
   "description": "AI assistant for The Config Team. Generates SAP/ERP change request quotes, supports ticket amendments, and guides structured discussion and resolution for TRS tickets.",
   "author": {
     "name": "The Config Team",
-    "url": "https://github.com/leomleao"
   },
-  "repository": "https://github.com/leomleao/tct-cowork-plugin",
   "keywords": ["trs", "sap", "erp", "quotes", "tickets"],
   "skills": "./skills/",
   "mcpServers": "./.mcp.json"
