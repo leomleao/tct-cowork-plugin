@@ -16,15 +16,15 @@ Configure or update the three userConfig fields required by this plugin:
 Check these locations in order. Stop at the first file found:
 
 1. `~/.claude/settings.json`
-2. `$APPDATA\Claude\settings.json` (Windows — expand the environment variable)
-3. `$USERPROFILE\.claude\settings.json` (Windows fallback — expand the environment variable)
+2. `%APPDATA%\Claude\settings.json` (Windows — expand the environment variable)
+3. `%USERPROFILE%\.claude\settings.json` (Windows fallback — expand the environment variable)
 
 Run existence checks:
 
 ```bash
 test -f ~/.claude/settings.json && echo "found" || echo "missing"
-test -f "$APPDATA/Claude/settings.json" && echo "found" || echo "missing"
-test -f "$USERPROFILE/.claude/settings.json" && echo "found" || echo "missing"
+test -f "%APPDATA%/Claude/settings.json" && echo "found" || echo "missing"
+test -f "%USERPROFILE%/.claude/settings.json" && echo "found" || echo "missing"
 ```
 
 If no file is found, note that you will create one at `~/.claude/settings.json`.
