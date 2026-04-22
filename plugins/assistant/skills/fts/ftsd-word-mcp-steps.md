@@ -83,7 +83,7 @@ Store `DEST` for all subsequent calls.
 | `{{CUSTOMER_REF}}`                     | [CUSTOMER_REF]                 |
 | `{{CHANGE_TITLE}}`                     | [CHANGE_TITLE]                 |
 | `{{ISSUE_NUMBER}}`                     | [ISSUE_NUMBER]                 |
-| `{{CHANGE_TYPE}}`                      | [CHANGE_TYPE]                  |
+| `{{CHANGE_TYPE}}`                      | Type [CHANGE_TYPE]             |
 | `{{CONTACT_NAME}}`                     | [CONTACT_NAME]                 |
 | `{{CONTACT_EMAIL}}`                    | [CONTACT_EMAIL]                |
 | `{{TEAM_LEADER_APPROVER}}`             | [TEAM_LEADER_APPROVER]         |
@@ -96,7 +96,7 @@ Store `DEST` for all subsequent calls.
 
 ## Inserting content — general rules
 
-**Multi-paragraph / bullet content:** Join all items with `\n` as `replace_text`. The tool splits on newlines and creates one paragraph per item, inheriting the style of the replaced token paragraph.
+**Multi-paragraph / bullet content:** Join all items with `\n` as `replace_text`. The tool splits on newlines and creates one paragraph per item, inheriting the style of the replaced token paragraph. For sections that are bullet lists, always add `paragraph_style: "Bullets"` to the `word:search_and_replace` call.
 
 **Subheadings inside a section:** Do NOT include subheading lines in the `\n`-joined replace_text. After the `search_and_replace`, insert each subheading with a separate call:
 
@@ -139,9 +139,10 @@ replace_text: SECTION_2_1 paragraphs joined with "\n"
 
 ```
 Tool: word:search_and_replace
-filename:     DEST
-find_text:    "{{SECTION_2_2}}"
-replace_text: SECTION_2_2 bullets joined with "\n"
+filename:        DEST
+find_text:       "{{SECTION_2_2}}"
+replace_text:    SECTION_2_2 bullets joined with "\n"
+paragraph_style: "Bullets"
 ```
 
 ---
@@ -182,9 +183,10 @@ replace_text: SECTION_2_3_2 body paragraphs joined with "\n"
 
 ```
 Tool: word:search_and_replace
-filename:     DEST
-find_text:    "{{SECTION_2_3_3}}"
-replace_text: SECTION_2_3_3 bullets joined with "\n"
+filename:        DEST
+find_text:       "{{SECTION_2_3_3}}"
+replace_text:    SECTION_2_3_3 bullets joined with "\n"
+paragraph_style: "Bullets"
 ```
 
 ---
@@ -206,9 +208,9 @@ If SECTION_3_1 contains subheadings, insert each with `word:insert_header_near_t
 
 ```
 Call 1 — find_text: "{{ISSUES}}"       replace_text: ISSUES value (or "No issues identified.")
-Call 2 — find_text: "{{RISKS}}"        replace_text: RISKS bullets joined with "\n"
-Call 3 — find_text: "{{ASSUMPTIONS}}"  replace_text: ASSUMPTIONS bullets joined with "\n"
-Call 4 — find_text: "{{DEPENDENCIES}}" replace_text: DEPENDENCIES bullets joined with "\n"
+Call 2 — find_text: "{{RISKS}}"        replace_text: RISKS bullets joined with "\n"        paragraph_style: "Bullets"
+Call 3 — find_text: "{{ASSUMPTIONS}}"  replace_text: ASSUMPTIONS bullets joined with "\n"  paragraph_style: "Bullets"
+Call 4 — find_text: "{{DEPENDENCIES}}" replace_text: DEPENDENCIES bullets joined with "\n" paragraph_style: "Bullets"
 ```
 
 ---
@@ -256,7 +258,7 @@ out = io.BytesIO()
 with zipfile.ZipFile(buf, 'r') as zin, zipfile.ZipFile(out, 'w', zipfile.ZIP_DEFLATED) as zout:
     for item in zin.infolist():
         data = zin.read(item.filename)
-        if item.filename == 'word/footer1.xml':
+        if item.filename.startswith('word/footer') and item.filename.endswith('.xml'):
             text = data.decode('utf-8')
             for token, value in replacements.items():
                 text = text.replace(token, value)

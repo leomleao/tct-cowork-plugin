@@ -34,7 +34,9 @@
       "Bash(powershell -Command \"Compress-Archive -Path ''C:\\\\Dev\\\\tct-cowork-plugin\\\\plugins\\\\assistant\\\\*'' -DestinationPath ''C:\\\\Users\\\\LeonardoLeao\\\\Downloads\\\\assistant.plugin'' -Force; Write-Host ''Done''\")",
       "mcp__plugin_context7_context7__resolve-library-id",
       "Bash(ls -d \"/c/Dev/tct-cowork-plugin/plugins/assistant/skills\"/*/)",
-      "Bash(git tag:*)"
+      "Bash(git tag:*)",
+      "Bash(python3 -c \"import zipfile; z=zipfile.ZipFile\\(r'/c/Users/LeonardoLeao/OneDrive - The Config Team/Desktop/Clients/TCTKIN/TCTKIN-435 - Outputs from Deliveries for Outstore Warehouse/TCTKIN-435 - Outputs from Deliveries for Outstore Warehouse - Quote AI DRAFT.docx'\\); print\\(z.read\\('word/document.xml'\\).decode\\('utf-8'\\)\\)\")",
+      "Bash(python3)"
     ]
   }
 }

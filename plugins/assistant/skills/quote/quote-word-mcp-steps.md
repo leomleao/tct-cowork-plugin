@@ -93,10 +93,12 @@ Store `DEST` for all subsequent calls.
 | `{{CUSTOMER_REF}}`   | [CUSTOMER_REF]       |
 | `{{CHANGE_TITLE}}`   | [CHANGE_TITLE]       |
 | `{{ISSUE_NUMBER}}`   | [ISSUE_NUMBER]       |
-| `{{CHANGE_TYPE}}`    | [CHANGE_TYPE]        |
+| `{{CHANGE_TYPE}}`    | Type [CHANGE_TYPE]   |
 | `{{CONTACT_NAME}}`   | [CONTACT_NAME]       |
 | `{{CONTACT_EMAIL}}`  | [CONTACT_EMAIL]      |
-| `{{PREPARED_BY}}`    | The Config Team |
+| `{{PREPARED_BY}}`    | The Config Team          |
+| `{{DATE}}`           | [QUOTE_DATE]             |
+| `{{TITLE_HEADING}}`  | Quotation for [CUSTOMER_NAME] [TICKET_ID] |
 
 > **Note:** `{{PREPARED_BY}}` appears **twice** in the template. Call `word:search_and_replace` twice with the same find/replace values to ensure both occurrences are replaced.
 
@@ -104,7 +106,7 @@ Store `DEST` for all subsequent calls.
 
 ## Inserting content — general rules
 
-**Multi-paragraph / bullet content:** Join all items with `\n` as `replace_text`. The tool splits on newlines and creates one paragraph per item, each inheriting the style of the replaced token paragraph.
+**Multi-paragraph / bullet content:** Join all items with `\n` as `replace_text`. The tool splits on newlines and creates one paragraph per item, each inheriting the style of the replaced token paragraph. For sections that are bullet lists, always add `paragraph_style: "Bullets"` to the `word:search_and_replace` call.
 
 **Subheadings (e.g. 3.1.1, 4.1.1):** Do NOT include subheading lines in the `\n`-joined replace_text. After the `search_and_replace` call, insert each subheading with a separate call:
 
@@ -136,9 +138,10 @@ If SECTION_3_1 contains subheadings, insert each with `word:insert_header_near_t
 
 ```
 Tool: word:search_and_replace
-filename:     DEST
-find_text:    "{{SECTION_3_2}}"
-replace_text: SECTION_3_2 bullets joined with "\n"
+filename:        DEST
+find_text:       "{{SECTION_3_2}}"
+replace_text:    SECTION_3_2 bullets joined with "\n"
+paragraph_style: "Bullets"
 ```
 
 ## Step 5 — Section 4.1 High Level Solution Design
@@ -156,18 +159,20 @@ Section 4.1 commonly contains subheadings (e.g. "Functional Design", "Technical 
 
 ```
 Tool: word:search_and_replace
-filename:     DEST
-find_text:    "{{SECTION_4_2}}"
-replace_text: SECTION_4_2 bullets joined with "\n"
+filename:        DEST
+find_text:       "{{SECTION_4_2}}"
+replace_text:    SECTION_4_2 bullets joined with "\n"
+paragraph_style: "Bullets"
 ```
 
 ## Step 7 — Section 4.2.1 Out of Scope
 
 ```
 Tool: word:search_and_replace
-filename:     DEST
-find_text:    "{{SECTION_4_2_1}}"
-replace_text: SECTION_4_2_1 bullets joined with "\n"
+filename:        DEST
+find_text:       "{{SECTION_4_2_1}}"
+replace_text:    SECTION_4_2_1 bullets joined with "\n"
+paragraph_style: "Bullets"
 ```
 
 Always include "Any functionality not explicitly listed as in scope." as the final bullet.
@@ -176,9 +181,10 @@ Always include "Any functionality not explicitly listed as in scope." as the fin
 
 ```
 Tool: word:search_and_replace
-filename:     DEST
-find_text:    "{{RISKS}}"
-replace_text: RISKS bullets joined with "\n"
+filename:        DEST
+find_text:       "{{RISKS}}"
+replace_text:    RISKS bullets joined with "\n"
+paragraph_style: "Bullets"
 ```
 
 ## Step 9 — Section 6.2 Assumptions
@@ -189,9 +195,10 @@ Only insert project-specific assumptions ABOVE them via the `{{ASSUMPTIONS_EXTRA
 If ASSUMPTIONS_EXTRA is non-empty:
 ```
 Tool: word:search_and_replace
-filename:     DEST
-find_text:    "{{ASSUMPTIONS_EXTRA}}"
-replace_text: ASSUMPTIONS_EXTRA bullets joined with "\n"
+filename:        DEST
+find_text:       "{{ASSUMPTIONS_EXTRA}}"
+replace_text:    ASSUMPTIONS_EXTRA bullets joined with "\n"
+paragraph_style: "Bullets"
 ```
 
 If ASSUMPTIONS_EXTRA is empty:
@@ -228,6 +235,28 @@ Then update total line via word:search_and_replace:
 - replace_text: "[TOTAL_DAYS] days ([TOTAL_HOURS] hours)"
   where TOTAL_HOURS = sum of all hours, TOTAL_DAYS = TOTAL_HOURS / 8 rounded to 1 decimal.
 
+Then compute TOTAL_ESTIMATE and replace `{{TOTAL_ESTIMATE}}` via word:search_and_replace:
+
+```
+if TOTAL_HOURS < 8:
+    TOTAL_ESTIMATE = "{TOTAL_HOURS} hours"
+elif TOTAL_HOURS % 8 == 0:
+    days = TOTAL_HOURS // 8
+    TOTAL_ESTIMATE = "{days} Day ({TOTAL_HOURS} hours)"          # e.g. "1 Day (8 hours)"
+else:
+    days = round(TOTAL_HOURS / 8)
+    TOTAL_ESTIMATE = "~{days} Days ({TOTAL_HOURS} hours)"        # e.g. "~2 Days (14 hours)"
+
+# Singular "Day" when days == 1, plural "Days" otherwise
+```
+
+```
+Tool: word:search_and_replace
+filename:     DEST
+find_text:    "{{TOTAL_ESTIMATE}}"
+replace_text: [computed TOTAL_ESTIMATE]
+```
+
 ## Step 12 — Footer (Bash + stdlib Python)
 
 ```python
@@ -247,7 +276,7 @@ out = io.BytesIO()
 with zipfile.ZipFile(buf, 'r') as zin, zipfile.ZipFile(out, 'w', zipfile.ZIP_DEFLATED) as zout:
     for item in zin.infolist():
         data = zin.read(item.filename)
-        if item.filename == 'word/footer1.xml':
+        if item.filename.startswith('word/footer') and item.filename.endswith('.xml'):
             text = data.decode('utf-8')
             for token, value in replacements.items():
                 text = text.replace(token, value)

@@ -80,7 +80,7 @@ Store `DEST` for all subsequent calls.
 
 ## Inserting content — general rules
 
-**Multi-paragraph / bullet content:** Join all items with `\n` as `replace_text`. The tool splits on newlines and creates one paragraph per item, inheriting the style of the replaced token paragraph.
+**Multi-paragraph / bullet content:** Join all items with `\n` as `replace_text`. The tool splits on newlines and creates one paragraph per item, inheriting the style of the replaced token paragraph. For sections that are bullet lists, always add `paragraph_style: "Bullets"` to the `word:search_and_replace` call.
 
 **Subheadings inside a section:** Do NOT include subheading lines in the `\n`-joined replace_text. After `search_and_replace`, insert each subheading with a separate call:
 
@@ -142,9 +142,10 @@ replace_text: SECTION_2_2_2 body paragraphs joined with "\n"
 
 ```
 Tool: word:search_and_replace
-filename:     DEST
-find_text:    "{{SECTION_2_2_3}}"
-replace_text: SECTION_2_2_3 bullets joined with "\n"
+filename:        DEST
+find_text:       "{{SECTION_2_2_3}}"
+replace_text:    SECTION_2_2_3 bullets joined with "\n"
+paragraph_style: "Bullets"
 ```
 
 ---
@@ -153,9 +154,10 @@ replace_text: SECTION_2_2_3 bullets joined with "\n"
 
 ```
 Tool: word:search_and_replace
-filename:     DEST
-find_text:    "{{SECTION_3}}"
-replace_text: SECTION_3 transport bullets joined with "\n"
+filename:        DEST
+find_text:       "{{SECTION_3}}"
+replace_text:    SECTION_3 transport bullets joined with "\n"
+paragraph_style: "Bullets"
 ```
 
 ---
@@ -175,9 +177,10 @@ replace_text: SECTION_4 paragraphs joined with "\n"
 
 ```
 Tool: word:search_and_replace
-filename:     DEST
-find_text:    "{{PLANNED_TEST_CASES}}"
-replace_text: PLANNED_TEST_CASES bullets joined with "\n"
+filename:        DEST
+find_text:       "{{PLANNED_TEST_CASES}}"
+replace_text:    PLANNED_TEST_CASES bullets joined with "\n"
+paragraph_style: "Bullets"
 ```
 
 ---
@@ -224,7 +227,7 @@ out = io.BytesIO()
 with zipfile.ZipFile(buf, 'r') as zin, zipfile.ZipFile(out, 'w', zipfile.ZIP_DEFLATED) as zout:
     for item in zin.infolist():
         data = zin.read(item.filename)
-        if item.filename == 'word/footer1.xml':
+        if item.filename.startswith('word/footer') and item.filename.endswith('.xml'):
             text = data.decode('utf-8')
             for token, value in replacements.items():
                 text = text.replace(token, value)
