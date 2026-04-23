@@ -39,6 +39,7 @@ Required files:
 test -f "$TEMPLATES_DIR/FTS template TOKENISED.docx"
 test -f "$TEMPLATES_DIR/Quote template TOKENISED.docx"
 test -f "$TEMPLATES_DIR/Unit Test template TOKENISED.docx"
+test -f "$TEMPLATES_DIR/Transport Form template TOKENISED.docx"
 ```
 
 If any of these checks fail, tell the user exactly what is missing and stop. Use this format:

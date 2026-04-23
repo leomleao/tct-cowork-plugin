@@ -1,6 +1,6 @@
 # tct-cowork-plugin
 
-A Claude Cowork plugin for **The Config Team (TCT)** that provides AI-assisted workflows for SAP and ERP change request management. It connects Claude to the TRS ticketing system and Microsoft Word to automate the full lifecycle of a change request, from initial discussion through to a signed-off unit test document.
+A Claude Cowork plugin for **The Config Team (TCT)** that provides AI-assisted workflows for SAP and ERP change request management. It connects Claude to the TRS ticketing system and Microsoft Word to automate the full lifecycle of a change request — from initial discussion through to a signed-off transport request form.
 
 ---
 
@@ -16,7 +16,16 @@ The plugin exposes a set of skills (slash commands) inside Claude Cowork. Each s
 | **quote** | `/quote [TICKET_ID]` | Full quote workflow. Fetches the ticket, runs a guided discussion, and generates a formal TCT change request quote `.docx`. |
 | **fts** | `/fts [TICKET_ID]` | Functional and Technical Specification Document (FTSD) workflow. Builds on an approved quote and produces a complete FTSD `.docx`. |
 | **unittest** | `/unittest [TICKET_ID]` | Unit Test Document (UTD) workflow. Extracts test coverage from the quote and FTSD, discusses additional scenarios, and generates a UTD `.docx`. |
+| **transport** | `/transport [TICKET_ID]` | Transport Request Form workflow. Raised after FTS and unit test are done. Gathers transport numbers, target landscape, and approval details, and generates a TCT Transport Request Form `.docx`. |
 | **save-context** | *(internal)* | Appends a session handover file to the ticket folder so future sessions resume with full context. |
+
+### Typical Workflow
+
+```text
+/discuss   →   /quote   →   /fts   →   /unittest   →   /transport
+```
+
+Each skill checks the ticket folder for prior context files and existing documents, so sessions chain together naturally without re-asking questions already answered.
 
 ### How It Works
 
@@ -66,6 +75,7 @@ tct-cowork-plugin/
 |           |-- fts/            # /fts skill
 |           |-- quote/          # /quote skill
 |           |-- save-context/   # Internal session context writer
+|           |-- transport/      # /transport skill
 |           |-- unittest/       # /unittest skill
 |           \-- user-config/    # Shared mount/config guard used by the skills
 \-- docs/                       # Internal planning and spec documents
@@ -137,6 +147,7 @@ assistant/
     |-- fts/
     |-- quote/
     |-- save-context/
+    |-- transport/
     |-- unittest/
     \-- user-config/
 ```
