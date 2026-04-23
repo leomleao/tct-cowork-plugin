@@ -32,7 +32,7 @@ Derive `CLIENT_PREFIX` by taking everything before the first hyphen in `TICKET_I
 ```
 DEST_FOLDER   = "[CLIENTS_ROOT]/[CLIENT_PREFIX]/[TICKET_ID] - [CHANGE_TITLE]"
 DEST          = "[DEST_FOLDER]/[TICKET_ID]_FTSD_[YYYY-MM-DD].docx"
-TEMPLATE      = "[CLIENTS_ROOT]/FTS template TOKENISED.docx"
+TEMPLATE      = "[CLIENTS_ROOT]/Templates/FTS template TOKENISED.docx"
 CONTEXT_FILE  = "[DEST_FOLDER]/[TICKET_ID]_context.md"
 ```
 
