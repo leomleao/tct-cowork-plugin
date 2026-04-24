@@ -12,7 +12,8 @@ Before writing a single file, read the closest existing skill end-to-end:
 - `*-amend-steps.md` — amendment flow
 
 Also read:
-- `skills/user-config/_config-guard.md` — mount guard and template validation logic
+- `skills/_shared/_config-guard.md` — mount guard and template validation logic
+- `skills/_shared/_linked-folders.md` — linked ticket folder lookup, cross-ticket document inventory
 - `skills/save-context/SKILL.md` — session type table and append logic
 
 ---
@@ -68,6 +69,7 @@ argument-hint: "<TICKET_ID>"
 1. Fetch ticket with `get_ticket_context`. Summarise and confirm.
 2. Check ticket output folder:
    - Read `[TICKET_ID]_context.md` if present — check for prior document references first.
+   - Load `skills/_shared/_linked-folders.md` and execute it.
    - If matching `*Doctype*.docx` found → load amend steps and stop.
    - If folder missing → warn user if that is unexpected.
 3. Gather missing facts (load questions file). Enforce any capacity limits here.
@@ -127,7 +129,8 @@ Five phases: Locate → Clarify → Pre-flight confirm → Apply tracked changes
 | File | What to add |
 |---|---|
 | `skills/save-context/SKILL.md` | New row in the session types table |
-| `skills/user-config/_config-guard.md` | `test -f` line for the new template file |
+| `skills/_shared/_config-guard.md` | `test -f` line for the new template file |
+| `skills/_shared/_linked-folders.md` | No change needed — generic helper, works for all skills automatically |
 | `README.md` | Row in Skills table, folder in repo structure tree, folder in zip structure tree, update tagline/workflow description if scope changed |
 
 ---
