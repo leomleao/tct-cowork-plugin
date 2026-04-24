@@ -168,7 +168,41 @@ replace_text: BACK_OUT_PLAN paragraphs joined with "\n"
 
 ---
 
-## Step 5 — Confirm
+## Step 5 — Footer (Bash + stdlib Python)
+
+```python
+import zipfile, io
+
+dest = r"[DEST_PATH]"
+replacements = {
+    '{{FOOTER_QUOTE_REF}}':    '[QUOTE_REF]',
+    '{{FOOTER_CUSTOMER_REF}}': '[CUSTOMER_REF]',
+    '{{FOOTER_CHANGE_TITLE}}': '[CHANGE_TITLE]',
+}
+
+with open(dest, 'rb') as f:
+    buf = io.BytesIO(f.read())
+
+out = io.BytesIO()
+with zipfile.ZipFile(buf, 'r') as zin, zipfile.ZipFile(out, 'w', zipfile.ZIP_DEFLATED) as zout:
+    for item in zin.infolist():
+        data = zin.read(item.filename)
+        if item.filename.startswith('word/footer') and item.filename.endswith('.xml'):
+            text = data.decode('utf-8')
+            for token, value in replacements.items():
+                text = text.replace(token, value)
+            data = text.encode('utf-8')
+        zout.writestr(item, data)
+
+with open(dest, 'wb') as f:
+    f.write(out.getvalue())
+
+print("Footer updated.")
+```
+
+---
+
+## Step 6 — Confirm
 
 Report to the user:
 - "Transport Form ready: [DEST]"
