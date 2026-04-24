@@ -30,7 +30,19 @@
       "Bash(ls -d \"/c/Dev/tct-cowork-plugin/plugins/assistant/skills\"/*/)",
       "Bash(git tag:*)",
       "Bash(python3 -c \"import zipfile; z=zipfile.ZipFile\\(r'/c/Users/LeonardoLeao/OneDrive - The Config Team/Desktop/Clients/TCTKIN/TCTKIN-435 - Outputs from Deliveries for Outstore Warehouse/TCTKIN-435 - Outputs from Deliveries for Outstore Warehouse - Quote AI DRAFT.docx'\\); print\\(z.read\\('word/document.xml'\\).decode\\('utf-8'\\)\\)\")",
-      "Bash(python3)"
+      "Bash(python3)",
+      "Bash(git -C \"c:/Dev/tct-cowork-plugin\" add -A plugins/assistant/skills/_shared/ plugins/assistant/skills/user-config/)",
+      "Bash(git -C \"c:/Dev/tct-cowork-plugin\" commit -m \"refactor: rename skills/user-config to skills/_shared\")",
+      "Bash(git -C /c/Dev/tct-cowork-plugin show --stat 59f9e11)",
+      "Bash(git -C /c/Dev/tct-cowork-plugin show b0f1d23 --stat)",
+      "Bash(git -C /c/Dev/tct-cowork-plugin diff ed41c49..b0f1d23 --name-only)",
+      "Bash(git -C /c/Dev/tct-cowork-plugin log --oneline ed41c49..b0f1d23)",
+      "Bash(git -C /c/Dev/tct-cowork-plugin log --oneline -10)",
+      "Bash(git -C /c/Dev/tct-cowork-plugin diff ed41c49..b0f1d23 -- plugins/assistant/skills/_shared/_linked-folders.md)",
+      "Bash(git -C \"c:/Dev/tct-cowork-plugin\" status)",
+      "Bash(git -C \"c:/Dev/tct-cowork-plugin\" log --oneline -5)",
+      "Bash(git -C \"c:/Dev/tct-cowork-plugin\" add plugins/assistant/skills/quote/SKILL.md plugins/assistant/skills/fts/SKILL.md plugins/assistant/skills/unittest/SKILL.md plugins/assistant/skills/transport/SKILL.md plugins/assistant/skills/discuss/SKILL.md)",
+      "Bash(git -C c:/Dev/tct-cowork-plugin commit -m ' *)"
     ]
   }
 }
