@@ -133,10 +133,38 @@ Issue one `word:search_and_replace` call per token in the table below.
 | `{{TRANSPORT_CROSS_CLIENT_8}}` | [TRANSPORT_CROSS_CLIENT_8] |
 | `{{TRANSPORT_NUMBER_9}}` | [TRANSPORT_NUMBER_9] |
 | `{{TRANSPORT_CROSS_CLIENT_9}}` | [TRANSPORT_CROSS_CLIENT_9] |
+| `{{POST_CUT_OVER_TASK_1}}` | [POST_CUT_OVER_TASK_1] |
+| `{{POST_CUT_OVER_TASK_2}}` | [POST_CUT_OVER_TASK_2] |
+| `{{POST_CUT_OVER_TASK_3}}` | [POST_CUT_OVER_TASK_3] |
+| `{{POST_CUT_OVER_TASK_4}}` | [POST_CUT_OVER_TASK_4] |
+| `{{POST_CUT_OVER_TASK_5}}` | [POST_CUT_OVER_TASK_5] |
 
 ---
 
-## Step 3 — Post-Cutover Tasks (word:search_and_replace on DEST)
+## Step 3 — Clear unused row numbers in transport and post-cutover tables
+
+The template has hard-coded row numbers (1–9 in transport grid, 1–5 in post-cutover grid).
+For any unused rows, delete the row number in the first column so the cell is blank.
+
+For example, if only 3 transports and 2 post-cutover tasks are needed:
+- Transport rows 4–9: clear the row number cell
+- Post-cutover rows 3–5: clear the row number cell
+
+Use `word:search_and_replace` with a narrower `find_text` to target each row number individually:
+```
+Tool: word:search_and_replace
+filename:  DEST
+find_text: "4" (the row number to clear — search for the exact cell content)
+replace_text: "" (empty string)
+```
+
+Repeat for each unused row number (4, 5, 6, 7, 8, 9 in transport; 3, 4, 5 in post-cutover).
+
+> **Note:** This assumes the template's row numbers are unique within their cells or easily targeted. If collisions occur with other content, use a more specific find string (e.g. "Row 4 " or the exact cell formatting context).
+
+---
+
+## Step 4 — Post-Cutover Tasks (word:search_and_replace on DEST)
 
 If `POST_CUT_OVER_TASKS` is non-empty:
 ```
@@ -168,7 +196,7 @@ replace_text: BACK_OUT_PLAN paragraphs joined with "\n"
 
 ---
 
-## Step 5 — Footer (Bash + stdlib Python)
+## Step 6 — Footer (Bash + stdlib Python)
 
 ```python
 import zipfile, io
@@ -202,7 +230,7 @@ print("Footer updated.")
 
 ---
 
-## Step 6 — Confirm
+## Step 7 — Confirm
 
 Report to the user:
 - "Transport Form ready: [DEST]"
