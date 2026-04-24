@@ -38,6 +38,7 @@ Read and follow `skills/_shared/_config-guard.md` before proceeding.
    - the FTSD, if already created
    - the session context file
    - any development notes, screenshots, evidence packs, logs, or supporting documents in that folder
+   - Load `skills/_shared/_linked-folders.md` and execute it.
 
 4. **Extract existing test coverage** from the available documents.
    Pull out:

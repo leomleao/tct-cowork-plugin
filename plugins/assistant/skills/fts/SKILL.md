@@ -37,6 +37,7 @@ Read and follow `skills/_shared/_config-guard.md` before proceeding.
    - the previously generated quote
    - the session context file
    - any customer notes, screenshots, technical write-ups, or supporting documents in that folder
+   - Load `skills/_shared/_linked-folders.md` and execute it.
 
 4. **Display a summary** of the ticket and documentation found so the user can confirm the correct ticket and source files.
 

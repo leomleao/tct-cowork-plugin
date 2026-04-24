@@ -37,6 +37,7 @@ Read and follow `skills/_shared/_config-guard.md` before proceeding.
      - If the context file references a previously generated Transport Form document → load [transport-amend-steps.md](transport-amend-steps.md) and stop here.
    - If any file matching `*Transport*.docx` exists in the folder → load [transport-amend-steps.md](transport-amend-steps.md) and stop here.
    - If the folder does not exist yet → warn the user that a Transport Form without a prior FTS/quote trail is unusual. Ask them to confirm before continuing.
+   - Load `skills/_shared/_linked-folders.md` and execute it.
 
 3. **Gather missing facts** by loading [transport-questions.md](transport-questions.md).
    Ask only what the ticket or context file does not already answer.
