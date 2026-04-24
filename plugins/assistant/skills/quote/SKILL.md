@@ -35,9 +35,9 @@ Read and follow `skills/_shared/_config-guard.md` before proceeding.
    `[CLIENTS_ROOT]/[CLIENT_PREFIX]/[TICKET_ID] - [CHANGE_TITLE]/`
    (where `CLIENT_PREFIX` is the part of `TICKET_ID` before the first hyphen).
    - If `[TICKET_ID]_context.md` exists, **read it** to understand what has already been discussed or produced for this ticket before proceeding.
+   - Load `skills/_shared/_linked-folders.md` and execute it.
    - If any file matching `*Quote*.docx` exists → load [quote-amend-steps.md](quote-amend-steps.md) and follow the amendment workflow. Stop here.
    - If the folder does not exist yet → continue with step 4.
-   - Load `skills/_shared/_linked-folders.md` and execute it.
 
 4. **Begin the guided discussion** using the core rules and clarifying questions below.
    Ask only what is missing — if the ticket already answers a question, note that and move on.
