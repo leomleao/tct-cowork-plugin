@@ -10,12 +10,13 @@ Called from step 2 of each skill's Entry Point, after the current ticket's own f
    - Derive `LINKED_CLIENT_PREFIX` = part of `LINKED_ID` before the first hyphen (e.g. `TCTRAT-1200` → `TCTRAT`)
    - Compute `LINKED_FOLDER` = `[CLIENTS_ROOT]/[LINKED_CLIENT_PREFIX]/[LINKED_ID] - [LINKED_TITLE]/`
    - Run: `ls "[LINKED_FOLDER]" 2>/dev/null`
+   Use `test -d "[LINKED_FOLDER]"` to distinguish "not found" (directory does not exist) from "exists but empty" (directory exists, ls returns nothing).
 
 3. From the directory listing, collect:
    - `[LINKED_ID]_context.md` — note present or absent
    - Any `*.docx` files, categorised by filename:
      - `*Quote*` → Quote
-     - `*FTS*` or `*FTSD*` → FTSD
+     - `*FTS*` → FTSD
      - `*Transport*` → Transport Form
      - `*Unit Test*` → Unit Test
      - Anything else → Other
@@ -26,10 +27,10 @@ Called from step 2 of each skill's Entry Point, after the current ticket's own f
 === Linked ticket folders ===
 
 Linked ticket: [LINKED_ID] — [LINKED_TITLE]
-Folder: [LINKED_FOLDER] (exists / not found)
+Folder: [LINKED_FOLDER] (exists / exists but empty / not found)
 Context file: present / absent
 Documents:
-  - [filename] ([type])
+  - [filename] ([type])   ← one entry per .docx found; write "(none)" if no .docx files present
 
 [repeat block for each linked ticket]
 
@@ -54,6 +55,8 @@ No linked ticket folders found.
 ## How the calling skill uses the inventory
 
 After reviewing the inventory, the calling skill acts as follows:
+
+These actions are taken by the **calling skill** after this helper returns — not by this helper.
 
 | What was found | Action |
 |---|---|
