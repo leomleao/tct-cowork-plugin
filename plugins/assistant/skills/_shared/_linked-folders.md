@@ -9,8 +9,7 @@ Called from step 2 of each skill's Entry Point, after the current ticket's own f
 2. For each linked ticket:
    - Derive `LINKED_CLIENT_PREFIX` = part of `LINKED_ID` before the first hyphen (e.g. `TCTRAT-1200` → `TCTRAT`)
    - Compute `LINKED_FOLDER` = `[CLIENTS_ROOT]/[LINKED_CLIENT_PREFIX]/[LINKED_ID] - [LINKED_TITLE]/`
-   - Run: `ls "[LINKED_FOLDER]" 2>/dev/null`
-   Use `test -d "[LINKED_FOLDER]"` to distinguish "not found" (directory does not exist) from "exists but empty" (directory exists, ls returns nothing).
+   - Run: `ls "[LINKED_FOLDER]" 2>/dev/null`. Use `test -d "[LINKED_FOLDER]"` to distinguish "not found" (directory does not exist) from "exists but empty" (directory exists, ls returns nothing).
 
 3. From the directory listing, collect:
    - `[LINKED_ID]_context.md` — note present or absent
