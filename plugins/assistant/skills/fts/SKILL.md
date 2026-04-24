@@ -21,7 +21,7 @@ Load these files at the indicated steps — do not load them all upfront:
 
 ## Entry Point
 
-Read and follow `skills/user-config/_config-guard.md` before proceeding.
+Read and follow `skills/_shared/_config-guard.md` before proceeding.
 
 1. **Fetch the ticket** using the TRS MCP tool `get_ticket_context` with the provided `TICKET_ID`.
    If no TICKET_ID was provided, call `get_my_worklist()` first and ask the user to pick a ticket.
