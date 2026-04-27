@@ -1,6 +1,6 @@
 # tct-cowork-plugin
 
-A Claude Cowork plugin for **The Config Team (TCT)** that provides AI-assisted workflows for SAP and ERP change request management. It connects Claude to the TRS ticketing system and Microsoft Word to automate the full lifecycle of a change request — from initial discussion through to a signed-off transport request form.
+A Claude Cowork plugin for **The Config Team (TCT)** that provides AI-assisted workflows for SAP and ERP change request management, plus TRS timesheet support. It connects Claude to the TRS ticketing system and Microsoft Word to automate the full lifecycle of a change request — from initial discussion through to a signed-off transport request form — and also helps users review and top up weekly TRS hours.
 
 ---
 
@@ -17,6 +17,7 @@ The plugin exposes a set of skills (slash commands) inside Claude Cowork. Each s
 | **fts** | `/fts [TICKET_ID]` | Functional and Technical Specification Document (FTSD) workflow. Builds on an approved quote and produces a complete FTSD `.docx`. |
 | **unittest** | `/unittest [TICKET_ID]` | Unit Test Document (UTD) workflow. Extracts test coverage from the quote and FTSD, discusses additional scenarios, and generates a UTD `.docx`. |
 | **transport** | `/transport [TICKET_ID]` | Transport Request Form workflow. Raised after FTS and unit test are done. Gathers transport numbers, target landscape, and approval details, and generates a TCT Transport Request Form `.docx`. |
+| **fill-timesheet** | `/fill-timesheet` | Reviews the current TRS week, compares it to recent history, identifies believable gaps, and can book confirmed top-up entries. |
 | **save-context** | *(internal)* | Appends a session handover file to the ticket folder so future sessions resume with full context. |
 
 ### Typical Workflow
@@ -72,6 +73,7 @@ tct-cowork-plugin/
 |       |-- .mcp.json           # MCP server definitions
 |       \-- skills/
 |           |-- discuss/        # /discuss skill
+|           |-- fill-timesheet/ # /fill-timesheet skill
 |           |-- fts/            # /fts skill
 |           |-- quote/          # /quote skill
 |           |-- save-context/   # Internal session context writer
@@ -144,6 +146,7 @@ assistant/
 |-- .mcp.json
 \-- skills/
     |-- discuss/
+    |-- fill-timesheet/
     |-- fts/
     |-- quote/
     |-- save-context/
