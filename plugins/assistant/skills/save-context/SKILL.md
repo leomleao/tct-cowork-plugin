@@ -60,6 +60,7 @@ Write exactly this structure for each session:
 | `Amendment` | This session amended an existing quote with tracked changes |
 | `Discussion` | Scoping or feasibility discussion — no technical investigation, no document produced |
 | `Investigation` | Active debugging, root-cause analysis, or technical research — even if no change resulted |
+| `Resolution` | This session set or updated the resolution category and text on a TRS ticket via the resolve skill |
 
 When in doubt between `Discussion` and `Investigation`: if you looked at system configuration, tested something, or analysed technical detail, use `Investigation`.
 

@@ -17,6 +17,7 @@ The plugin exposes a set of skills (slash commands) inside Claude Cowork. Each s
 | **fts** | `/fts [TICKET_ID]` | Functional and Technical Specification Document (FTSD) workflow. Builds on an approved quote and produces a complete FTSD `.docx`. |
 | **unittest** | `/unittest [TICKET_ID]` | Unit Test Document (UTD) workflow. Extracts test coverage from the quote and FTSD, discusses additional scenarios, and generates a UTD `.docx`. |
 | **transport** | `/transport [TICKET_ID]` | Transport Request Form workflow. Raised after FTS and unit test are done. Gathers transport numbers, target landscape, and approval details, and generates a TCT Transport Request Form `.docx`. |
+| **resolve** | `/resolve [TICKET_ID]` | Sets or updates the resolution category and resolution text on a TRS ticket. Infers the best category and drafts professional resolution text from ticket context, presents the proposal to the user, then applies it via `edit_resolution`. |
 | **fill-timesheet** | `/fill-timesheet` | Reviews the current TRS week, compares it to recent history, identifies believable gaps, and can book confirmed top-up entries. |
 | **save-context** | *(internal)* | Appends a session handover file to the ticket folder so future sessions resume with full context. |
 
@@ -75,8 +76,7 @@ tct-cowork-plugin/
 |           |-- discuss/        # /discuss skill
 |           |-- fill-timesheet/ # /fill-timesheet skill
 |           |-- fts/            # /fts skill
-|           |-- quote/          # /quote skill
-|           |-- save-context/   # Internal session context writer
+|           |-- quote/          # /quote skill            |-- resolve/        # /resolve skill|           |-- save-context/   # Internal session context writer
 |           |-- transport/      # /transport skill
 |           |-- unittest/       # /unittest skill
 |           \-- user-config/    # Shared mount/config guard used by the skills
@@ -149,6 +149,7 @@ assistant/
     |-- fill-timesheet/
     |-- fts/
     |-- quote/
+    |-- resolve/
     |-- save-context/
     |-- transport/
     |-- unittest/

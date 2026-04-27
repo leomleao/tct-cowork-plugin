@@ -83,3 +83,11 @@ Once the user acknowledges the recommendation, invoke the `save-context` skill a
 Session type:
 - Use `Investigation` if you analysed technical detail or root cause during the discussion.
 - Use `Discussion` if the session was scoping or feasibility only, with no technical analysis.
+
+**If the agreed outcome is a concrete resolution** (i.e. the recommended outcome is one of: Configuration change, User error / training, No Fault Found, More information not needed, Rejection, or Request Cancelled) — suggest the `/resolve` skill to the user:
+
+> "Would you like me to write and apply the resolution to this ticket in TRS? Run `/resolve [TICKET_ID]` and I'll draft the category and text from our discussion."
+
+**When displaying the worklist** (if `get_my_worklist()` was called) — scan the returned tickets for any whose status or description suggests they are already resolved or awaiting closure. For each such ticket, note it to the user:
+
+> "[TICKET_ID] — [title] looks like it may be ready to close. Run `/resolve [TICKET_ID]` to set the resolution."
