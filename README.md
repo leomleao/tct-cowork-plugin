@@ -19,6 +19,7 @@ The plugin exposes a set of skills (slash commands) inside Claude Cowork. Each s
 | **transport** | `/transport [TICKET_ID]` | Transport Request Form workflow. Raised after FTS and unit test are done. Gathers transport numbers, target landscape, and approval details, and generates a TCT Transport Request Form `.docx`. |
 | **resolve** | `/resolve [TICKET_ID]` | Sets or updates the resolution category and resolution text on a TRS ticket. Infers the best category and drafts professional resolution text from ticket context, presents the proposal to the user, then applies it via `edit_resolution`. |
 | **fill-timesheet** | `/fill-timesheet` | Reviews the current TRS week, compares it to recent history, identifies believable gaps, and can book confirmed top-up entries. |
+| **standup** | `/standup` | Pre-standup briefing. Pulls worklist, MRP planned work, and recent timesheet, cross-references them, and produces a two-zone prioritised overview: committed work vs available pool. |
 | **save-context** | *(internal)* | Appends a session handover file to the ticket folder so future sessions resume with full context. |
 
 ### Typical Workflow
@@ -76,7 +77,10 @@ tct-cowork-plugin/
 |           |-- discuss/        # /discuss skill
 |           |-- fill-timesheet/ # /fill-timesheet skill
 |           |-- fts/            # /fts skill
-|           |-- quote/          # /quote skill            |-- resolve/        # /resolve skill|           |-- save-context/   # Internal session context writer
+|           |-- quote/          # /quote skill
+|           |-- resolve/        # /resolve skill
+|           |-- save-context/   # Internal session context writer
+|           |-- standup/        # /standup skill
 |           |-- transport/      # /transport skill
 |           |-- unittest/       # /unittest skill
 |           \-- user-config/    # Shared mount/config guard used by the skills
@@ -151,6 +155,7 @@ assistant/
     |-- quote/
     |-- resolve/
     |-- save-context/
+    |-- standup/
     |-- transport/
     |-- unittest/
     \-- user-config/
