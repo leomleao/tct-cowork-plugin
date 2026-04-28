@@ -96,7 +96,7 @@ Store `DEST` for all subsequent calls.
 | `{{CHANGE_TYPE}}`    | Type [CHANGE_TYPE]   |
 | `{{CONTACT_NAME}}`   | [CONTACT_NAME]       |
 | `{{CONTACT_EMAIL}}`  | [CONTACT_EMAIL]      |
-| `{{PREPARED_BY}}`    | The Config Team          |
+| `{{PREPARED_BY}}`    | [PREPARED_BY_NAME]       |
 | `{{DATE}}`           | [QUOTE_DATE]             |
 | `{{TITLE_HEADING}}`  | Quotation for [CUSTOMER_NAME] [TICKET_ID] |
 

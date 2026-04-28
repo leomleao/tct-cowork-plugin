@@ -15,7 +15,7 @@ Wait for explicit user approval before proceeding to document generation. If the
 | Change Title | [CHANGE_TITLE] |
 | Customer Ref | [CUSTOMER_REF] |
 | Quote Ref | [QUOTE_REF] |
-| Prepared By | [PREPARED_BY] |
+| Prepared By | [PREPARED_BY_NAME] |
 | Contact Number | [CONTACT_NUMBER] |
 | Contact Name | [CONTACT_NAME] |
 | Contact Email | [CONTACT_EMAIL] |

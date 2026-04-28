@@ -9,7 +9,7 @@ Execute these steps in order once the user has approved the draft review.
 Ensure you have values for all of these before starting:
 
 `TICKET_ID`, `CHANGE_TITLE`, `CUSTOMER_REF`, `QUOTE_REF`,
-`PREPARED_BY`, `CONTACT_NUMBER`, `CONTACT_NAME`, `CONTACT_EMAIL`,
+`CONTACT_NUMBER`, `CONTACT_NAME`, `CONTACT_EMAIL`,
 `REQUEST_DATE` (DD/MM/YYYY — today), `APPROVED_BY`, `DATE_APPROVED` (DD/MM/YYYY or `[TBC]`),
 `TRANSPORT_DATETIME` (DD/MM/YYYY HH:mm), `CUSTOMER_COMMENTS` (empty string if none),
 `PURPOSE_DESCRIPTION`, `BUSINESS_AREA`, `FUNCTIONAL_AREA`,
@@ -87,8 +87,8 @@ Issue one `word:search_and_replace` call per token in the table below.
 | `{{CHANGE_TITLE}}` | [CHANGE_TITLE] |
 | `{{CUSTOMER_REF}}` | [CUSTOMER_REF] |
 | `{{QUOTE_REF}}` | [QUOTE_REF] |
-| `{{PREPARED_BY}}` | [PREPARED_BY] |
-| `{{PREPARED_BY}}` | [PREPARED_BY] *(second occurrence)* |
+| `{{PREPARED_BY}}` | [PREPARED_BY_NAME] |
+| `{{PREPARED_BY}}` | [PREPARED_BY_NAME] *(second occurrence)* |
 | `{{CONTACT_NUMBER}}` | [CONTACT_NUMBER] |
 | `{{CONTACT_NAME}}` | [CONTACT_NAME] |
 | `{{CONTACT_EMAIL}}` | [CONTACT_EMAIL] |

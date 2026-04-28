@@ -51,13 +51,43 @@ If any of these checks fail, tell the user exactly what is missing and stop. Use
 > Please add the missing template(s) and try again.
 ```
 
-Only if all checks pass, print this single line and return control to the calling skill immediately — no pause, no user confirmation:
+Only if all checks pass, resolve `PREPARED_BY_NAME` (see below), then print this single line and return control to the calling skill immediately — no pause, no user confirmation:
 
 ```
 > Workspace: [CLIENTS_ROOT]
 ```
 
 Use `CLIENTS_ROOT` for all file path construction in the calling skill.
+
+---
+
+## Prepared By check
+
+After template validation passes, resolve `PREPARED_BY_NAME` before returning control.
+
+```bash
+SESSION_MNT=$(ls -d /sessions/*/mnt 2>/dev/null | head -1)
+CLAUDE_MD="$SESSION_MNT/outputs/CLAUDE.md"
+PREPARED_BY_NAME=$(grep "^Consultant Name:" "$CLAUDE_MD" 2>/dev/null | sed 's/^Consultant Name: //')
+```
+
+**If `PREPARED_BY_NAME` is non-empty:** proceed silently — no output needed.
+
+**If `PREPARED_BY_NAME` is empty or the file doesn't exist:**
+
+Ask the user:
+
+> I don't have your name on file yet. What is your full name? I'll use it as the **Prepared By** value on all documents I generate.
+
+Once the user replies, append this line to `$CLAUDE_MD` (create the file first if it doesn't exist):
+
+```
+Consultant Name: [user's full name]
+```
+
+Set `PREPARED_BY_NAME` to the provided name and continue.
+
+Use `PREPARED_BY_NAME` wherever a document step calls for the `{{PREPARED_BY}}` token.
 
 ## Unhappy path
 

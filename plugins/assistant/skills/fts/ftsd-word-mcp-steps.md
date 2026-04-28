@@ -31,7 +31,7 @@ Derive `CLIENT_PREFIX` by taking everything before the first hyphen in `TICKET_I
 
 ```
 DEST_FOLDER   = "[CLIENTS_ROOT]/[CLIENT_PREFIX]/[TICKET_ID] - [CHANGE_TITLE]"
-DEST          = "[DEST_FOLDER]/[TICKET_ID]_FTSD_[YYYY-MM-DD].docx"
+DEST          = "[DEST_FOLDER]/[TICKET_ID] - [CHANGE_TITLE] - FTSD AI DRAFT.docx"
 TEMPLATE      = "[CLIENTS_ROOT]/Templates/FTS template TOKENISED.docx"
 CONTEXT_FILE  = "[DEST_FOLDER]/[TICKET_ID]_context.md"
 ```
@@ -88,7 +88,7 @@ Store `DEST` for all subsequent calls.
 | `{{CONTACT_EMAIL}}`                    | [CONTACT_EMAIL]                |
 | `{{TEAM_LEADER_APPROVER}}`             | [TEAM_LEADER_APPROVER]         |
 | `{{SERVICE_DELIVERY_MANAGER_APPROVER}}`| [SERVICE_DELIVERY_MANAGER_APPROVER] |
-| `{{PREPARED_BY}}`                      | The Config Team                |
+| `{{PREPARED_BY}}`                      | [PREPARED_BY_NAME]             |
 
 > **Note:** `{{PREPARED_BY}}` appears **twice** in the template. Call `word:search_and_replace` twice with the same find/replace values to ensure both occurrences are replaced.
 
