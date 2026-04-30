@@ -43,10 +43,10 @@ Read and follow `skills/_shared/_config-guard.md` before proceeding.
      If not found, ask the user to confirm the landscape during step 3; then write or update `_landscape.md` after step 5 (generation) with the confirmed values.
 
 3. **Gather missing facts** by loading [transport-questions.md](transport-questions.md).
-   Before asking anything, attempt to **infer** from the ticket, context file, and linked documents (quote, FTSD):
-   - Cross-client flags from the FTSD or quote scope section.
-   - Impact on master data, number ranges, and locked objects from the FTSD change description.
-   - Back-out plan from the FTSD or prior discussion notes.
+   Before asking anything, attempt to **infer** from the ticket, context file, and linked documents (quote, FTS):
+   - Cross-client flags from the FTS or quote scope section.
+   - Impact on master data, number ranges, and locked objects from the FTS change description.
+   - Back-out plan from the FTS or prior discussion notes.
    - Customer approval: check ticket comments and context file — the form should only be raised once approved; if an approver name and date are visible, use them without asking.
    - Customer contact email: infer from context or prior documents; if inferred (not confirmed), flag it clearly in the review ("inferred — please verify").
    Present inferred values as pre-filled in the review draft rather than asking for them explicitly.

@@ -1,6 +1,6 @@
 ---
 name: unittest
-description: Full unit test document workflow — fetch TRS ticket, inspect the existing ticket documentation folder, extract test coverage from quote and FTSD, agree additional test scenarios, and generate a TCT unit test document
+description: Full unit test document workflow — fetch TRS ticket, inspect the existing ticket documentation folder, extract test coverage from quote and FTS, agree additional test scenarios, and generate a TCT unit test document
 disable-model-invocation: true
 argument-hint: "<TICKET_ID>"
 ---
@@ -9,7 +9,7 @@ argument-hint: "<TICKET_ID>"
 
 ## Role
 You are a specialist SAP / IT Solution Architect responsible for producing Unit Test Documents (UTDs).
-Your job is to convert the approved quote, FTSD if available, ticket context, and supporting evidence into a complete Unit Test Document using the standard TCT template.
+Your job is to convert the approved quote, FTS if available, ticket context, and supporting evidence into a complete Unit Test Document using the standard TCT template.
 
 ## Supporting files
 
@@ -35,7 +35,7 @@ Read and follow `skills/_shared/_config-guard.md` before proceeding.
 3. **Inspect existing documentation first**.
    Prioritise:
    - the approved quote
-   - the FTSD, if already created
+   - the FTS, if already created
    - the session context file
    - any development notes, screenshots, evidence packs, logs, or supporting documents in that folder
    - Load `skills/_shared/_linked-folders.md` and execute it.
@@ -48,12 +48,12 @@ Read and follow `skills/_shared/_config-guard.md` before proceeding.
 
 5. **Discuss appropriate unit tests** with the user.
    Present:
-   - the tests already implied by the quote and FTSD
+   - the tests already implied by the quote and FTS
    - the additional tests that should be added to give complete coverage
    Confirm or adjust this test set before drafting the final document.
 
 6. **Ask clarifying questions only for missing information** needed to complete sections 2–5.2.3.
-   The quote and FTSD should answer most questions already; only ask for what is still unclear or missing.
+   The quote and FTS should answer most questions already; only ask for what is still unclear or missing.
    Use the clarifying questions checklist below as a guide.
 
 7. **When sufficient information is gathered**, load [utd-review-template.md](utd-review-template.md) and [utd-structure.md](utd-structure.md), then present the full UTD draft review in one block.
@@ -71,7 +71,7 @@ Read and follow `skills/_shared/_config-guard.md` before proceeding.
 - Ticket not found: ask the user to confirm the ID or paste the details manually.
 - Ticket folder not found: ask the user to confirm the change title, then create the folder at the path above.
 - Quote not found in the folder: ask the user to identify the correct source document or provide it manually before drafting the UTD.
-- FTSD not found: continue using the quote and other supporting material, but state that FTSD-derived test coverage could not be extracted.
+- FTS not found: continue using the quote and other supporting material, but state that FTS-derived test coverage could not be extracted.
 - Required test detail cannot be confirmed: mark it as `[TBC — reason]` and highlight the missing expected result or data requirement.
 - Never invent system behaviour, test results, transports, SAP objects, or evidence.
 
@@ -80,7 +80,7 @@ Read and follow `skills/_shared/_config-guard.md` before proceeding.
 ## Core rules — follow these without exception
 
 1. Do not invent or assume functionality, system behaviour, logic, technical components, process steps, or expected outcomes that have not been stated or explicitly confirmed.
-2. Use the approved quote and FTSD, where available, as the primary basis for the Unit Test Document.
+2. Use the approved quote and FTS, where available, as the primary basis for the Unit Test Document.
 3. Extract all explicit and implied test-related coverage from the source documents before proposing new tests.
 4. Propose additional unit tests where needed to cover the confirmed change fully, then discuss and confirm them with the user before document generation.
 5. Ask clarifying questions only for information still missing after reviewing the existing documentation.
@@ -110,7 +110,7 @@ The provided documents should contain most of this information already. Ask only
 
 Before drafting the document:
 
-1. Summarise the tests already evidenced by the quote and FTSD.
+1. Summarise the tests already evidenced by the quote and FTS.
 2. List the additional unit tests you believe are needed for complete coverage.
 3. Highlight any coverage gaps, undefined expected results, or missing evidence requirements.
 4. Ask the user to confirm, remove, or refine the proposed test set.

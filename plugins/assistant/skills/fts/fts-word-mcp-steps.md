@@ -1,4 +1,4 @@
-# FTSD Word MCP generation steps
+# FTS Word MCP generation steps
 
 Execute these steps in order once the user has approved the draft review.
 
@@ -6,8 +6,8 @@ Execute these steps in order once the user has approved the draft review.
 
 Ensure you have confirmed values for all of these before starting:
 
-`TICKET_ID`, `CUSTOMER_REF`, `CHANGE_TITLE`, `FTSD_DATE` (DD/MM/YYYY),
-`FTSD_REF` (document reference number — use `[TICKET_ID]_FTSD` if no separate reference exists),
+`TICKET_ID`, `CUSTOMER_REF`, `CHANGE_TITLE`, `FTS_DATE` (DD/MM/YYYY),
+`FTS_REF` (document reference number — use `[TICKET_ID]_FTS` if no separate reference exists),
 `ISSUE_NUMBER`, `CHANGE_TYPE` (1–5), `CONTACT_NAME`, `CONTACT_EMAIL`,
 `TEAM_LEADER_APPROVER`, `SERVICE_DELIVERY_MANAGER_APPROVER`,
 `SECTION_1_1`, `SECTION_2_1`, `SECTION_2_2`,
@@ -24,14 +24,14 @@ If fewer than 4 test cases are needed, set unused `TEST_CASE_N_NAME` and `TEST_C
 
 ---
 
-## Step 1 — Create output folder and copy FTSD template
+## Step 1 — Create output folder and copy FTS template
 
 Derive `CLIENT_PREFIX` by taking everything before the first hyphen in `TICKET_ID`
 (e.g. `TCTLAOR-30` → `TCTLAOR`, `TCTRAT-1252` → `TCTRAT`).
 
 ```
 DEST_FOLDER   = "[CLIENTS_ROOT]/[CLIENT_PREFIX]/[TICKET_ID] - [CHANGE_TITLE]"
-DEST          = "[DEST_FOLDER]/[TICKET_ID] - [CHANGE_TITLE] - FTSD AI DRAFT.docx"
+DEST          = "[DEST_FOLDER]/[TICKET_ID] - [CHANGE_TITLE] - FTS AI DRAFT.docx"
 TEMPLATE      = "[CLIENTS_ROOT]/Templates/FTS template TOKENISED.docx"
 CONTEXT_FILE  = "[DEST_FOLDER]/[TICKET_ID]_context.md"
 ```
@@ -40,7 +40,7 @@ CONTEXT_FILE  = "[DEST_FOLDER]/[TICKET_ID]_context.md"
 
    Write to `[CONTEXT_FILE]`:
    ```markdown
-   ## Session [YYYY-MM-DD] — FTSD
+   ## Session [YYYY-MM-DD] — FTS
 
    ### Ticket summary
    [One-line description of the ticket]
@@ -52,7 +52,7 @@ CONTEXT_FILE  = "[DEST_FOLDER]/[TICKET_ID]_context.md"
    - None
 
    ### Decisions made
-   - FTSD document generation started.
+   - FTS document generation started.
 
    ### Open items / TBCs
    - Document generation in progress — full session notes will be appended on completion.
@@ -77,8 +77,8 @@ Store `DEST` for all subsequent calls.
 | find_text                              | replace_text                   |
 |----------------------------------------|--------------------------------|
 | `{{TICKET_ID}}`                        | [TICKET_ID]                    |
-| `{{QUOTE_REF}}`                        | [FTSD_REF]                     |
-| `{{QUOTE_DATE}}`                       | [FTSD_DATE]                    |
+| `{{QUOTE_REF}}`                        | [FTS_REF]                     |
+| `{{QUOTE_DATE}}`                       | [FTS_DATE]                    |
 | `{{EXPIRY_DATE}}`                      | Issued + 28 days               |
 | `{{CUSTOMER_REF}}`                     | [CUSTOMER_REF]                 |
 | `{{CHANGE_TITLE}}`                     | [CHANGE_TITLE]                 |
@@ -246,7 +246,7 @@ import zipfile, io
 
 dest = r"[DEST_PATH]"
 replacements = {
-    '{{FOOTER_QUOTE_REF}}':    '[FTSD_REF]',
+    '{{FOOTER_QUOTE_REF}}':    '[FTS_REF]',
     '{{FOOTER_CUSTOMER_REF}}': '[CUSTOMER_REF]',
     '{{FOOTER_CHANGE_TITLE}}': '[CHANGE_TITLE]',
 }
@@ -276,5 +276,5 @@ print("Footer updated.")
 ## Step 14 — Confirm
 
 Report to the user:
-- `FTSD document ready: [DEST]`
+- `FTS document ready: [DEST]`
 - `Sources reviewed: [short list of documents used]`

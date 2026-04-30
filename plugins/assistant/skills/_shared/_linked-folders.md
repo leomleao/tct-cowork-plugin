@@ -15,7 +15,7 @@ Called from step 2 of each skill's Entry Point, after the current ticket's own f
    - `[LINKED_ID]_context.md` — note present or absent
    - Any `*.docx` files, categorised by filename:
      - `*Quote*` → Quote
-     - `*FTS*` → FTSD
+     - `*FTS*` → FTS
      - `*Transport*` → Transport Form
      - `*Unit Test*` → Unit Test
      - Anything else → Other

@@ -1,13 +1,13 @@
 # Transport — Gather-Facts Checklist
 
-Before asking the user anything, attempt to infer each value from the ticket, the context file, and linked documents (quote, FTSD). Only raise a question if a value genuinely cannot be determined. Present inferred values in the review draft with a note ("inferred — please verify") rather than asking explicitly.
+Before asking the user anything, attempt to infer each value from the ticket, the context file, and linked documents (quote, FTS). Only raise a question if a value genuinely cannot be determined. Present inferred values in the review draft with a note ("inferred — please verify") rather than asking explicitly.
 
 ---
 
 ## Transport Identification
 
 - What are the transport request numbers? (List all — one per line; **must come from the user or ticket**)
-- **Cross-client flag per transport** — infer from the FTSD or quote (scope / technical design section). Configuration-only changes are typically Client Specific; ABAP/repository changes are typically Cross Client. Only confirm with the user if the documents don't make it clear.
+- **Cross-client flag per transport** — infer from the FTS or quote (scope / technical design section). Configuration-only changes are typically Client Specific; ABAP/repository changes are typically Cross Client. Only confirm with the user if the documents don't make it clear.
 
 ---
 
@@ -25,7 +25,7 @@ Before asking the user anything, attempt to infer each value from the ticket, th
 
 ## Impact Assessment
 
-Infer impact from the FTSD or quote before asking. For a custom ABAP program or configuration-only change, the likely defaults are No master data impact, No number ranges affected, no locked objects — state the inference and ask the user to confirm or correct, rather than asking open questions.
+Infer impact from the FTS or quote before asking. For a custom ABAP program or configuration-only change, the likely defaults are No master data impact, No number ranges affected, no locked objects — state the inference and ask the user to confirm or correct, rather than asking open questions.
 
 - **Master data** — does this transport affect master data? (Yes / No + brief detail if Yes)
 - **Number ranges** — does it affect number ranges? (Yes / No + brief detail if Yes)
@@ -51,7 +51,7 @@ Do **not** ask the user to list post-cutover tasks. Instead, propose a sensible 
 
 ## Back-Out Plan
 
-Infer a back-out plan from the FTSD or the nature of the change (e.g. re-importing the previous transport, reverting configuration, restoring a backup). State the inference in the draft and ask the user to confirm or replace it. Only ask open-ended if the change type makes inference genuinely impossible.
+Infer a back-out plan from the FTS or the nature of the change (e.g. re-importing the previous transport, reverting configuration, restoring a backup). State the inference in the draft and ask the user to confirm or replace it. Only ask open-ended if the change type makes inference genuinely impossible.
 
 ---
 

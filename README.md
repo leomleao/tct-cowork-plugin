@@ -14,8 +14,8 @@ The plugin exposes a set of skills (slash commands) inside Claude Cowork. Each s
 |---|---|---|
 | **discuss** | `/discuss [TICKET_ID]` | Structured investigation of a TRS ticket. Assesses status, investigates the problem, and recommends a resolution without assuming a quote is needed. |
 | **quote** | `/quote [TICKET_ID]` | Full quote workflow. Fetches the ticket, runs a guided discussion, and generates a formal TCT change request quote `.docx`. |
-| **fts** | `/fts [TICKET_ID]` | Functional and Technical Specification Document (FTSD) workflow. Builds on an approved quote and produces a complete FTSD `.docx`. |
-| **unittest** | `/unittest [TICKET_ID]` | Unit Test Document (UTD) workflow. Extracts test coverage from the quote and FTSD, discusses additional scenarios, and generates a UTD `.docx`. |
+| **fts** | `/fts [TICKET_ID]` | Functional and Technical Specification (FTS) workflow. Builds on an approved quote and produces a complete FTS `.docx`. |
+| **unittest** | `/unittest [TICKET_ID]` | Unit Test Document (UTD) workflow. Extracts test coverage from the quote and FTS, discusses additional scenarios, and generates a UTD `.docx`. |
 | **transport** | `/transport [TICKET_ID]` | Transport Request Form workflow. Raised after FTS and unit test are done. Gathers transport numbers, target landscape, and approval details, and generates a TCT Transport Request Form `.docx`. |
 | **resolve** | `/resolve [TICKET_ID]` | Sets or updates the resolution category and resolution text on a TRS ticket. Infers the best category and drafts professional resolution text from ticket context, presents the proposal to the user, then applies it via `edit_resolution`. |
 | **fill-timesheet** | `/fill-timesheet` | Reviews the current TRS week, compares it to recent history, identifies believable gaps, and can book confirmed top-up entries. |

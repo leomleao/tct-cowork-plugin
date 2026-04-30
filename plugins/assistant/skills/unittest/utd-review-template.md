@@ -12,13 +12,13 @@ Wait for explicit user approval before proceeding to document generation. If the
 **Sources reviewed**
 - Ticket: [one-line summary of ticket title and description]
 - Quote: [filename or "not found"]
-- FTSD: [filename or "not found"]
+- FTS: [filename or "not found"]
 - Context file: [filename or "not found"]
 - Other docs: [list or "none"]
 
 **Extracted test coverage**
 - [tests already implied by the quote]
-- [tests already implied by the FTSD]
+- [tests already implied by the FTS]
 
 **Proposed additional unit tests**
 - [additional scenario 1, or "None — existing coverage is sufficient"]

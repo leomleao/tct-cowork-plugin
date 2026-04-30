@@ -54,7 +54,7 @@ Write exactly this structure for each session:
 | Type | When to use |
 |---|---|
 | `Quote` | This session produced or updated a formal quote document |
-| `FTSD` | This session produced or updated a functional/technical specification document |
+| `FTS` | This session produced or updated a functional/technical specification document |
 | `UTD` | This session produced or updated a unit test document |
 | `Transport` | This session produced or updated a Transport Request Form document |
 | `Amendment` | This session amended an existing quote with tracked changes |

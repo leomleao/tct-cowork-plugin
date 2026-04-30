@@ -60,11 +60,51 @@ Use recency to:
 - Elevate likely in-progress tickets into Zone 1 (if not already there as a named MRP match)
 - Rank within pools: recently active tickets rank above untouched ones
 
+### Detect stale Zone 1 tickets
+
+For each ticket in Zone 1, check the last timesheet entry date:
+- If it has not been touched in 5 or more calendar days, flag it as **STALE**.
+- Stale tickets are likely drifted, blocked, or forgotten — surface them clearly so the user can chase or reassess.
+
+### Interpret blocked/awaiting status
+
+For any ticket where the status suggests waiting (e.g. "Awaiting Customer", "Awaiting 3rd Party", "On Hold", "Pending"), do not surface it as blocked without thinking:
+- If the last comment or activity is **from the customer or third party** → the status is likely stale. Treat it as **ACTIONABLE** and note: "Customer has replied — status may need updating."
+- If the last comment or activity is **from you** → you are genuinely waiting. Label it **WAITING** and surface it accordingly.
+- If direction cannot be determined → surface the status as-is with a note: "Verify — may need chasing."
+- WAITING tickets in Zone 1 should be clearly labelled so they are not mistaken for actionable work.
+
+### Day of week awareness
+
+Determine the current day of the week:
+- **Monday–Tuesday**: normal planning horizon — all pool tickets are valid candidates.
+- **Wednesday onwards**: note that the week is past its midpoint. Deprioritise pool tickets that have no recency signal this week and are not named in MRP. Surface a note in Zone 3: "Week is past midpoint — pool tickets without recent activity are unlikely to be reached this week."
+
+### Capacity calculation
+
+From MRP data, determine:
+- **Total available hours this week** = sum of all MRP allocations excluding holiday/unavailable entries. Default to 37.5h if MRP data is insufficient.
+- **Committed hours** = sum of MRP-named ticket allocations + estimated time for timesheet-elevated Zone 1 tickets (use last session duration as a proxy, or 2h if unknown).
+- **Remaining capacity** = available − committed.
+
+From today's timesheet entries (extracted from the 2-week timesheet data):
+- **Hours logged today** = sum of time entries for today's date.
+- **Remaining today** = 7.5h (standard day) − hours logged today.
+
 ---
 
 ## Step 3 — Output
 
 Produce a single formatted block with three zones.
+
+### Ticket ID linking
+
+Whenever a ticket ID is shown (in any zone), render it as a markdown hyperlink using the portal URL:
+`[TICKET-ID](https://portal.theconfigteam.co.uk/hd/TICKET-ID)`
+
+Example: `[TCTCWN-10761](https://portal.theconfigteam.co.uk/hd/TCTCWN-10761)`
+
+Apply this to every ticket ID in Zone 1, Zone 2, and Zone 3.
 
 ### ZONE 1 — Committed
 
@@ -72,9 +112,10 @@ Named MRP tickets (directly allocated this week) plus recently active tickets no
 listed as named MRP matches.
 
 For each entry:
-- Ticket ID, title, type
+- Ticket ID (as a hyperlink), title, type
 - MRP hours allocated (if a named ticket) or "in progress" label (if timesheet-elevated)
-- Current status from worklist
+- Current status from worklist — if the status suggests waiting, include the interpreted state: **ACTIONABLE** or **WAITING** with a brief reason
+- ⚠️ **STALE** if not touched in 5+ calendar days
 - Flag if ticket is in MRP but missing from worklist
 
 ### ZONE 2 — Available Pool
@@ -83,18 +124,29 @@ Only show sections that have allocated MRP time or tickets to fill them.
 
 **Change Requests (Internal - Adhoc CRs: Xh)**
 CR-type worklist tickets not in Zone 1. Ranked: recently active first, then worklist order.
-Each line: `TICKET-ID — Title — Status`
+Each line: `[TICKET-ID](https://portal.theconfigteam.co.uk/hd/TICKET-ID) — Title — Status`
 
 **Service / Issues / Other (Internal - Tickets: Xh)**
 Remaining ticket types not in Zone 1. Same ranking.
-Each line: `TICKET-ID — Title — Status`
+Each line: `[TICKET-ID](https://portal.theconfigteam.co.uk/hd/TICKET-ID) — Title — Status`
 
 ### ZONE 3 — Context Strip
 
 - Unavailable time from MRP (holidays, time away): show as "X day(s) unavailable"
+- Day of week note (Wednesday onwards): "Week is past midpoint — pool tickets without recent activity are unlikely to be reached this week."
 - Worklist tickets that don't fit any MRP bucket (no time allocated this week): shown as "unscheduled — low priority unless pulled in"
 - Unrecognised MRP entries
+- **Capacity**: `[████████░░] 30h / 37.5h committed` — filled blocks (█) proportional to committed vs available, empty blocks (░) for remaining. Show exact numbers alongside. Use 10 blocks total.
+- **Today**: `Xh logged · Xh remaining` — derived from today's timesheet entries against a 7.5h standard day. Omit if no timesheet data for today.
 - Summary line (always last): `Xh committed · Xh in CRs · Xh in tickets · [X day holiday]. Y tickets in pool.`
+
+### Standup Script
+
+After Zone 3, generate a short paragraph the user can read verbatim at standup:
+
+> **Yesterday** I worked on [list Zone 1 tickets touched yesterday by title, or "nothing logged" if none]. **Today** I'm focusing on [top 1–2 Zone 1 items]. [If any WAITING tickets: "I'm waiting on [party] for [ticket title]." Otherwise: "No blockers."]
+
+Keep it to 2–4 sentences. Use first person. UK English.
 
 ---
 

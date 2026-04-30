@@ -1,6 +1,6 @@
-# FTSD section content guidance
+# FTS section content guidance
 
-Use this reference when drafting FTSD content. Write at a functional and technical design level — no code or pseudocode. Mark anything uncertain as `[TBC — reason]`.
+Use this reference when drafting FTS content. Write at a functional and technical design level — no code or pseudocode. Mark anything uncertain as `[TBC — reason]`.
 
 ---
 
