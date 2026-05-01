@@ -50,8 +50,11 @@ Wait for explicit user approval before proceeding to document generation. If the
 [For each test case:]
 **Test Case [N] — [name]**
 - Objective: [text]
-- Steps: [numbered]
-- Expected result: [text]
+- Steps:
+  1. [step 1]
+  2. [step 2]
+  *(numbered list — one action per step)*
+- Expected Result: [text]
 
 **5.2.1 UAT Scenario — End-to-End Validation**
 [draft text]

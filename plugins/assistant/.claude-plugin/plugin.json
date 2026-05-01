@@ -1,6 +1,6 @@
 {
   "name": "assistant",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "AI assistant for The Config Team. Generates SAP/ERP change request quotes, supports ticket amendments, guides structured discussion and resolution for TRS tickets, and helps users review and fill TRS timesheets.",
   "author": {
     "name": "The Config Team"

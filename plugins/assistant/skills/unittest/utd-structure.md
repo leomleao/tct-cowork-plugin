@@ -69,17 +69,20 @@ List all planned test scenarios, one per bullet. Include:
 
 ## Section 5 — Unit Testing Results
 
-### 5.1.1 – 5.1.4 Test Cases (up to 4 slots)
+### 5.1.1 – 5.1.N Test Cases
 For each test case, provide:
 
-| Field | Value |
+| Field | Guidance |
 |---|---|
+| Name | Short descriptive label for the test case |
 | Objective | What this test verifies |
-| Method / Steps | Numbered list of actions to execute |
-| Expected Result | What correct system behaviour looks like |
-| Actual Result | Leave blank — tester completes this |
-| Evidence | Placeholder for screenshot / log reference |
-| Result | Leave blank — tester marks Pass / Fail |
+| Steps | Numbered list of exact actions to execute — one action per step, written as imperative instructions (e.g. "Open transaction MM60", "Enter material number", "Confirm result") |
+| Expected Result | What correct system behaviour looks like after the steps are completed |
+| Actual Result | Leave blank — the tester completes this field |
+| Evidence | Leave blank — placeholder for screenshot or log reference |
+| Result | Leave blank — the tester marks Pass or Not Pass |
+
+Steps must always be a numbered list. Never write steps as a single paragraph. Aim for 3–8 concise, testable steps per test case.
 
 Group in order: unit tests first, then move to UAT scenarios.
 

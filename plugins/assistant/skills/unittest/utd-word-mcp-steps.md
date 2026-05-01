@@ -11,13 +11,9 @@ Ensure you have confirmed values for all of these before starting:
 `SECTION_2_1`, `SECTION_2_2_1`, `SECTION_2_2_2`, `SECTION_2_2_3`,
 `SECTION_3` (transports), `SECTION_4` (testing strategy overview),
 `PLANNED_TEST_CASES` (bullet list for section 4.1),
-`TEST_CASE_1_NAME`, `TEST_CASE_1`,
-`TEST_CASE_2_NAME`, `TEST_CASE_2`,
-`TEST_CASE_3_NAME`, `TEST_CASE_3`,
-`TEST_CASE_4_NAME`, `TEST_CASE_4`,
+`TEST_CASE_1_NAME`, `TEST_CASE_1_OBJECTIVE`, `TEST_CASE_1_STEPS` (numbered list), `TEST_CASE_1_EXPECTED_RESULT`,
+`TEST_CASE_N_NAME`, `TEST_CASE_N_OBJECTIVE`, `TEST_CASE_N_STEPS`, `TEST_CASE_N_EXPECTED_RESULT` (one set per additional test case, for N = 2, 3, … as many as agreed),
 `SECTION_5_2_1`, `SECTION_5_2_2`, `SECTION_5_2_3`
-
-If fewer than 4 test cases are needed, set unused `TEST_CASE_N_NAME` and `TEST_CASE_N` to empty strings.
 
 ---
 
@@ -185,16 +181,58 @@ paragraph_style: "Bullets"
 
 ---
 
-## Step 10 — Test cases (up to 4 pairs of calls)
+## Step 10 — Test case sections
 
-For each test case slot (1 through 4), make two `word:search_and_replace` calls:
+The template contains **one** formatted test case block (section 5.1.1) with four tokens. Fill test case 1 directly using token replacement; insert additional test case blocks for N = 2, 3, 4 as required.
 
+### 10A — Fill test case 1 (4 `word:search_and_replace` calls)
+
+| find_text | replace_text | notes |
+|---|---|---|
+| `{{TEST_CASE_1_NAME}}` | [TEST_CASE_1_NAME] | |
+| `{{TEST_CASE_1_OBJECTIVE}}` | [TEST_CASE_1_OBJECTIVE] | |
+| `{{TEST_CASE_1_STEPS}}` | Steps joined with `\n` | `paragraph_style: "List Number"` |
+| `{{TEST_CASE_1_EXPECTED_RESULT}}` | [TEST_CASE_1_EXPECTED_RESULT] | |
+
+`TEST_CASE_1_STEPS` must be a numbered list — one step per line, with no leading number (the List Number style adds numbering automatically). For example:
 ```
-Call A — find_text: "{{TEST_CASE_N_NAME}}"  replace_text: [TEST_CASE_N_NAME] (or "" if unused)
-Call B — find_text: "{{TEST_CASE_N}}"       replace_text: TEST_CASE_N body joined with "\n" (or "" if unused)
+Open transaction XYZ
+Enter the material number
+Confirm the result
+```
+Join with `\n` as the `replace_text` value.
+
+### 10B — Additional test cases (N = 2, 3, … — one block per extra test case)
+
+For each additional test case, insert a complete new block immediately **after** the `Result: Pass | Not Pass` line of the preceding test case.
+
+**i. Insert the section heading** using `word:insert_header_near_text`:
+```
+Tool:         word:insert_header_near_text
+filename:     DEST
+target_text:  "Result: Pass | Not Pass"   ← the last line of the preceding test case block
+header_title: "5.1.N Test Case – [TEST_CASE_N_NAME]"
+position:     "after"
+header_style: "Heading 3"
 ```
 
-Process all 4 slots even if some are empty, so no tokens remain in the document.
+**ii. Insert the body paragraphs** in order, each as a separate paragraph immediately after the one before it:
+
+| Paragraph text | Style |
+|---|---|
+| `Objective: [TEST_CASE_N_OBJECTIVE]` | Normal |
+| `Steps:` | Normal |
+| `[step 1 text]` | `List Number` |
+| `[step 2 text]` | `List Number` |
+| *(one row per step)* | `List Number` |
+| `Expected Result: [TEST_CASE_N_EXPECTED_RESULT]` | Normal |
+| `Actual Result:` | Normal |
+| `Evidence:` | Normal |
+| `Result: Pass | Not Pass` | Normal |
+
+Insert paragraphs in document order (top to bottom), setting `position: "after"` relative to the previously inserted paragraph each time.
+
+Repeat step 10B for each additional test case in ascending order (2, 3, 4, … however many were agreed).
 
 ---
 
